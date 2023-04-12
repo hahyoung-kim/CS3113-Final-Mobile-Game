@@ -6,7 +6,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public int speed = 5;
+    public int speed = 2;
     public int jumpForce = 650;
     int bulletSpeed = 600;
     private Rigidbody2D _rigidbody;
@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
 
     public LayerMask whatIsGround;
     public Transform feet;
+    public Transform camera;
  
     bool grounded = false;
 
@@ -29,15 +30,15 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        float xSpeed = Input.GetAxis("Horizontal") * speed;
-        _rigidbody.velocity = new Vector2(xSpeed,_rigidbody.velocity.y);
+        if (transform.position.x - camera.position.x <= -2.8f)
+            _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
 
-        float xScale = transform.localScale.x;
-        if ((xSpeed < 0 && xScale > 0) || (xSpeed > 0 && xScale < 1))
-        {
-            transform.localScale *= new Vector2(-1,1);
-        }
-        _animator.SetFloat("Speed", Mathf.Abs(xSpeed));
+        // float xScale = transform.localScale.x;
+        // if ((xSpeed < 0 && xScale > 0) || (xSpeed > 0 && xScale < 1))
+        // {
+        //     transform.localScale *= new Vector2(-1,1);
+        // }
+        // _animator.SetFloat("Speed", Mathf.Abs(xSpeed));
     }
 
     void Update()
