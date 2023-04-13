@@ -1435,6 +1435,7 @@ MonoBehaviour:
   - {fileID: 7650810765565003353, guid: eb99178effaf2a84da469e35a54a7fdb, type: 3}
   - {fileID: 210816211290001355, guid: 2addf95cb23e0e747a8c21af52ae4b71, type: 3}
   - {fileID: 9062343327257926634, guid: ad3ff682c0404534cb81a28d1093bbe8, type: 3}
+  - {fileID: 9011022653007219315, guid: 027a1c9454613dc44b6545371b7615b7, type: 3}
   maxX: 11.5
   minX: 13
   maxY: 2.7
