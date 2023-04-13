@@ -13,7 +13,10 @@ public class Player : MonoBehaviour
     private Animator _animator; 
     private SpriteRenderer _renderer;
     public string currLvl = "Level1";
-
+    GameManager _gameManager;
+    AudioSource _audioSource;
+    public AudioClip hurtSound;
+    public AudioClip pickupSound;
     public LayerMask whatIsGround;
     public Transform feet;
     public Transform camera;
@@ -26,6 +29,8 @@ public class Player : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator> ();
         _renderer = GetComponent<SpriteRenderer>();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate()
@@ -39,6 +44,24 @@ public class Player : MonoBehaviour
         //     transform.localScale *= new Vector2(-1,1);
         // }
         // _animator.SetFloat("Speed", Mathf.Abs(xSpeed));
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.CompareTag("Enemy")) {
+            _audioSource.PlayOneShot(hurtSound);
+            _gameManager.loseLife(1);
+            StartCoroutine(FlashRed());
+        } else if (other.CompareTag("Carrot")){
+            _audioSource.PlayOneShot(pickupSound);
+            Destroy(other.gameObject);
+            _gameManager.AddCarrots(1); // lose all lives
+        }
+    }
+
+    IEnumerator FlashRed() {
+        _renderer.color = Color.red;
+        yield return new WaitForSeconds(.1f);
+        _renderer.color = Color.white;
     }
 
     void Update()
