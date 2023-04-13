@@ -17,6 +17,5 @@ public class KillZone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 }

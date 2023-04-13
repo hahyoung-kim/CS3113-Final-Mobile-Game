@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
             Destroy(other.gameObject);
-            _gameManager.AddCarrots(1); // lose all lives
+            _gameManager.AddCarrots(1);
         }
     }
 
