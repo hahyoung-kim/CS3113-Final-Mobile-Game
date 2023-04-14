@@ -1643,7 +1643,7 @@ MonoBehaviour:
   - {fileID: 210816211290001355, guid: 2addf95cb23e0e747a8c21af52ae4b71, type: 3}
   - {fileID: 9062343327257926634, guid: ad3ff682c0404534cb81a28d1093bbe8, type: 3}
   - {fileID: 9011022653007219315, guid: 027a1c9454613dc44b6545371b7615b7, type: 3}
-  - {fileID: 991525102148298739, guid: cdb18947c5cdf744d92ab74a2a852bd1, type: 3}
+  - {fileID: 1930974273074504715, guid: cdb18947c5cdf744d92ab74a2a852bd1, type: 3}
   - {fileID: 7830506948979057214, guid: ed59205b740a9744e84394e7026db141, type: 3}
   - {fileID: 135186944814547732, guid: c7423412521501c488d0a5a73b6c8c97, type: 3}
   maxX: 11.5
@@ -2413,7 +2413,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960871, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: m_Constraints
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: feet
