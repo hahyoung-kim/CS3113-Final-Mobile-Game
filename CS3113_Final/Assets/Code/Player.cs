@@ -35,6 +35,11 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        if (Input.GetMouseButton(0)){
+            _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
+        } else if (Input.GetMouseButtonUp(0)){
+            _rigidbody.velocity *= 0.50f;
+        }
         if (transform.position.x - camera.position.x <= -2.8f)
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
 

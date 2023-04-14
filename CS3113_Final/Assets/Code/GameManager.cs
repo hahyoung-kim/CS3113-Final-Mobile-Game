@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     public int lives = 3;
     int carrots = 0;
-    // public TextMeshProUGUI scoreUI;
     //public TextMeshProUGUI livesUI;
     //public TextMeshProUGUI reduceHealthUI;
     public string currLvl = "Level1";
@@ -17,6 +16,7 @@ public class GameManager : MonoBehaviour
     //public Image black;
     //public Animator animator;
     AudioSource _audioSource;
+    public GameObject player;
 
     private void Awake()
     {
@@ -28,8 +28,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void Start()
-    {        
-        // scoreUI.text = "score: " + score;
+    {   
         _audioSource = GetComponent<AudioSource>();
         //livesUI.text = "Lives: " + lives;  
         //reduceHealthUI.text = "-1";
@@ -57,7 +56,6 @@ public class GameManager : MonoBehaviour
 
     //IEnumerator PlayerDeath() {
     private void PlayerDeath() {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
         //Instantiate(explosion, player.transform.position, Quaternion.identity);
         Destroy(player);
         //animator.SetBool("Fade", true);
