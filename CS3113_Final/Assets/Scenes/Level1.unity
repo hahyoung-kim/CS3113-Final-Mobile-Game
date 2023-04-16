@@ -1433,7 +1433,7 @@ GameObject:
   - component: {fileID: 1437118213}
   - component: {fileID: 1437118212}
   - component: {fileID: 1437118214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2428,7 +2428,7 @@ PrefabInstance:
       objectReference: {fileID: 1528076073}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: speed
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: camera
@@ -2442,6 +2442,10 @@ PrefabInstance:
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 3a702ea4f67805f4f8e4baa2ec699eed, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: whatIsGround.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960873, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: m_RootOrder
       value: 1

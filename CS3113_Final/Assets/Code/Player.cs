@@ -6,7 +6,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public int speed = 2;
+    public int speed = 3;
     public int jumpForce = 650;
     int bulletSpeed = 600;
     private Rigidbody2D _rigidbody;
@@ -41,8 +41,12 @@ public class Player : MonoBehaviour
         else if (Input.GetMouseButtonUp(0)){
             _rigidbody.velocity *= 0.50f;
         }
-        if (transform.position.x - camera.position.x <= -2.8f)
+        if (transform.position.x - camera.position.x <= -3.5f) {
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
+        } 
+        else if (transform.position.x - camera.position.x >= -2.7f && grounded) {
+            _rigidbody.velocity = new Vector2(-speed,_rigidbody.velocity.y);
+        }
 
         // float xScale = transform.localScale.x;
         // if ((xSpeed < 0 && xScale > 0) || (xSpeed > 0 && xScale < 1))
@@ -72,6 +76,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
+        print("grounded " + grounded);
         for (int i = 0; i < Input.touchCount; ++i){
 
             Touch touch = Input.GetTouch(i);

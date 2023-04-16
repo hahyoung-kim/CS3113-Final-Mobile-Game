@@ -20,13 +20,15 @@
      }
 
      void FixedUpdate(){
-         score = (int)player.transform.position.x - startingPosX;
-         scoreUI.text = "score: " + score + "\nhighscore: " + highscore;
-         if (score > highscore){
-             highscore = score;
-             scoreUI.text = "score: " + score + "\nhighscore: " + highscore;
-             PlayerPrefs.SetInt ("highscore", highscore);
-         }
+        if (GetComponent<GameManager>().GetLives() > 0) {
+            score = (int)player.transform.position.x - startingPosX;
+            scoreUI.text = "score: " + score + "\nhighscore: " + highscore;
+            if (score > highscore){
+                highscore = score;
+                scoreUI.text = "score: " + score + "\nhighscore: " + highscore;
+                PlayerPrefs.SetInt ("highscore", highscore);
+            }
+        }
      }
  
      public static void AddPoints (int pointsToAdd)
