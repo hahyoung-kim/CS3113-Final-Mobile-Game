@@ -75,7 +75,8 @@ public class Player : MonoBehaviour
         for (int i = 0; i < Input.touchCount; ++i){
 
             Touch touch = Input.GetTouch(i);
-            if (touch.phase == TouchPhase.Began){
+            //if (touch.phase == TouchPhase.Began){
+            if (touch.phase == TouchPhase.Stationary){ // did not test yet
                 _rigidbody.AddForce(new Vector2(0, jumpForce));
             }
         }
