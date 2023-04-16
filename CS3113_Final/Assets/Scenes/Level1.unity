@@ -1650,7 +1650,7 @@ MonoBehaviour:
   minX: 13
   maxY: 4.7
   minY: -2.1
-  timeBetweenSpawn: 3
+  timeBetweenSpawn: 1.5
   player: {fileID: 1203076797}
 --- !u!4 &1532490013
 Transform:
