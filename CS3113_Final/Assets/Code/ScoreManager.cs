@@ -6,7 +6,7 @@
  public class ScoreManager : MonoBehaviour {
  
      public static int score;
-     public static int highscore;
+     public static int highscore = 0;
      public TextMeshProUGUI scoreUI;
      int startingPosX = 0;
      public GameObject player;
