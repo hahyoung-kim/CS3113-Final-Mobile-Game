@@ -12,7 +12,6 @@ public class Spawn : MonoBehaviour
     public float minY;
     public float timeBetweenSpawn;
     private float spawnTime;
-    private GameObject toSpawn;
     public GameObject player;
 
     // Start is called before the first frame update
@@ -25,14 +24,20 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         if (Time.time > spawnTime) {
-            toSpawn = spawnList[Random.Range(0, spawnList.Length)];
-            SpawnObj();
+            int spawnType = Random.Range(0, 2);
+            GameObject toSpawn;
+            if (spawnType == 0) {
+                toSpawn = spawnList[Random.Range(0, 2)];
+            } else {
+                toSpawn = spawnList[Random.Range(2, spawnList.Length)]; 
+            }
+            SpawnObj(toSpawn);
             spawnTime = Time.time + timeBetweenSpawn;
         }
         
     }
 
-    void SpawnObj() {
+    void SpawnObj(GameObject toSpawn) {
         float randomX = Random.Range(minX, maxX);
         float randomY = Random.Range(minY, maxY);
 
