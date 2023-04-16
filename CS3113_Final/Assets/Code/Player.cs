@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
             if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
-                _rigidbody.AddForce(new Vector2(0, jumpForce));
+                _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
             }
         }
     }
