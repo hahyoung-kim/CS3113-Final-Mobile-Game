@@ -10,8 +10,7 @@ public class Thorns : MonoBehaviour
     void Start()
     {
         if (!blossoms) {
-            var r = Random.Range(1, 7);
-            print(r + " " + 15*r);
+            var r = Random.Range(1, 12);
             transform.Rotate (0, 0, 15 * r);
         }
     }

@@ -20,7 +20,6 @@ public class CameraMovement : MonoBehaviour
     {
         //if (_gameManager.GetLives() > 0) {
             cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.1);
-            print("spd " + cameraSpeed);
             transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
         //}
         

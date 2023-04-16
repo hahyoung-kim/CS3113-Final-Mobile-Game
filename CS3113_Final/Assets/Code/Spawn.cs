@@ -39,7 +39,6 @@ public class Spawn : MonoBehaviour
             elapsedTime = Time.time - startTime;
             if (elapsedTime >= 1) {
                 timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
-                print("tbs " + timeBetweenSpawn);
                 minX = ogMinX - (float)(Math.Log(elapsedTime));
                 maxX = ogMaxX - (float)(Math.Log(elapsedTime));
             }
