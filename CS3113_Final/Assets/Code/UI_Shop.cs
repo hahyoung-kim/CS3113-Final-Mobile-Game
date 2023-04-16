@@ -25,9 +25,14 @@ public class UI_Shop : MonoBehaviour
      public static int coinMulLvl = 0;
      public static int carrots = 0;
 
-    void Start(){
-        PlayerPrefs.DeleteAll();
-    }
+     private int[] magnetCost = {50, 100, 175, 275, 400};
+     private int[] boostCost = {50, 100, 175, 275, 400};
+     private int[] shieldCost = {30, 70, 120, 180, 250};
+     private int[] coinMulCost = {75, 125, 200, 300, 425};
+
+    // void Start(){
+    //     PlayerPrefs.DeleteAll();
+    // }
 
     public void FixedUpdate()
     {
@@ -40,17 +45,52 @@ public class UI_Shop : MonoBehaviour
         coinMul = PlayerPrefs.GetInt("coinMul", coinMul);
         coinMulLvl = PlayerPrefs.GetInt("coinMulLvl", coinMulLvl);
         carrots = PlayerPrefs.GetInt("carrots", carrots);
+
+        coinsUI.text = "" + carrots;
+
+        bool canBuy = (magnetCost[magnetLvl] <= carrots);
+        if (magnetLvl == 5 || !canBuy){
+            magnetB.interactable = false;
+        }
+        else{
+            magnetB.interactable = true;
+        }
+        canBuy = (boostCost[boostLvl] <= carrots);
+        if (boostLvl == 5 || !canBuy){
+            boostB.interactable = false;
+        }
+        else{
+            boostB.interactable = true;
+        }
+        canBuy = (shieldCost[boostLvl] <= carrots);
+        if (boostLvl == 5 || !canBuy){
+            shieldB.interactable = false;
+        }
+        else{
+            shieldB.interactable = true;
+        }
+        canBuy = (coinMulCost[coinMulLvl] <= carrots);
+        if (coinMulLvl == 5 || !canBuy){
+            coinMulB.interactable = false;
+        }
+        else{
+            coinMulB.interactable = true;
+        }
     }
 
     public void magnetButton(){
-        if (magnetLvl == 0){
+        bool canBuy = (magnetCost[magnetLvl] <= carrots);
+        if (canBuy && magnetLvl < maxLvl){
+            magnetB.interactable = true;
+            if (magnetLvl == 0){
             PlayerPrefs.SetInt("magnet", 1);
             PlayerPrefs.SetInt("magnetLvl", 1);
+            }
+            else {
+                PlayerPrefs.SetInt("magnetLvl", magnetLvl+1);
+            }
         }
-        else if (magnetLvl < maxLvl){
-            PlayerPrefs.SetInt("magnetLvl", magnetLvl+1);
-        }
-        if (magnetLvl == 5){
+        if (magnetLvl == 5 || !canBuy){
             magnetB.interactable = false;
         }
         print(PlayerPrefs.GetInt("magnetLvl", 0));
