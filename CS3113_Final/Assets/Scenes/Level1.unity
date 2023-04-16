@@ -1646,10 +1646,16 @@ MonoBehaviour:
   - {fileID: 1930974273074504715, guid: cdb18947c5cdf744d92ab74a2a852bd1, type: 3}
   - {fileID: 7830506948979057214, guid: ed59205b740a9744e84394e7026db141, type: 3}
   - {fileID: 135186944814547732, guid: c7423412521501c488d0a5a73b6c8c97, type: 3}
+  spawnYBounds:
+  - -2.7,2.9
+  - -2.7,2.9
+  - -2.0,4.7
+  - -3.6,3.3
+  - -4.0,3.0
+  - -4.3,1.3
+  - -4.0,4.25
   maxX: 20
   minX: 16
-  maxY: 3
-  minY: -2.1
   timeBetweenSpawn: 3
   player: {fileID: 1203076797}
 --- !u!4 &1532490013
@@ -2052,7 +2058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f240299ea8d3d949a60c27e1140d13a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSpeed: 3
+  cameraSpeed: 1
   player: {fileID: 1203076797}
 --- !u!4 &1908279393
 Transform:

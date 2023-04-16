@@ -8,17 +8,22 @@ public class CameraMovement : MonoBehaviour
     public float cameraSpeed;
     private float ogSpd;
     public GameObject player;
+    //GameManager _gameManager;
 
     void Start() {
         ogSpd = cameraSpeed;
+        //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.1);
-        print("spd " + cameraSpeed);
-        transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        //if (_gameManager.GetLives() > 0) {
+            cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.1);
+            print("spd " + cameraSpeed);
+            transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+        //}
+        
     }
 }
 

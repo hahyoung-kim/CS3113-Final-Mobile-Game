@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
-    public int lives = 3;
+    public int lives = 1;
     int carrots = 0;
     //public TextMeshProUGUI livesUI;
     //public TextMeshProUGUI reduceHealthUI;

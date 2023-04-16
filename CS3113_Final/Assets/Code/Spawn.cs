@@ -6,11 +6,11 @@ using System;
 public class Spawn : MonoBehaviour
 {
     public GameObject[] spawnList;
+    public string[] spawnYBounds;
+    //GameManager _gameManager;
 
     public float maxX;
     public float minX;
-    public float maxY;
-    public float minY;
     public float timeBetweenSpawn;
     private float ogTBS;
     private float ogMinX;
@@ -19,6 +19,7 @@ public class Spawn : MonoBehaviour
     public GameObject player;
     private float startTime;
     private float elapsedTime;
+    private int spawnInd;
 
     // Start is called before the first frame update
     void Start()
@@ -27,47 +28,53 @@ public class Spawn : MonoBehaviour
         ogMinX = minX;
         ogMaxX = maxX;
         startTime = Time.time;
+        //_gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        elapsedTime = Time.time - startTime;
-        if (elapsedTime >= 1) {
-            timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
-            print("tbs " + timeBetweenSpawn);
-            minX = ogMinX - (float)(Math.Log(elapsedTime)*2);
-            maxX = ogMaxX - (float)(Math.Log(elapsedTime)*2);
-        }
-        
-        if (minX < 10) {
-            minX = 10;
-        }
-        if (maxX < 10) {
-            maxX = 10;
-        }
-        if (timeBetweenSpawn < 1.5f) {
-            timeBetweenSpawn = 1.5f;
-        }
-        if (elapsedTime > spawnTime) {
-            int spawnType = UnityEngine.Random.Range(0, 2);
-            GameObject toSpawn;
-            if (spawnType == 0) {
-                toSpawn = spawnList[UnityEngine.Random.Range(0, 2)];
-            } else {
-                toSpawn = spawnList[UnityEngine.Random.Range(2, spawnList.Length)]; 
+        //if (_gameManager.GetLives() > 0) {
+            elapsedTime = Time.time - startTime;
+            if (elapsedTime >= 1) {
+                timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
+                print("tbs " + timeBetweenSpawn);
+                minX = ogMinX - (float)(Math.Log(elapsedTime));
+                maxX = ogMaxX - (float)(Math.Log(elapsedTime));
             }
-            SpawnObj(toSpawn);
-            spawnTime = elapsedTime + timeBetweenSpawn;
-        }
-        
+            
+            if (minX < 10) {
+                minX = 10;
+            }
+            if (maxX < 10) {
+                maxX = 10;
+            }
+            if (timeBetweenSpawn < 0.5f) {
+                timeBetweenSpawn = 0.5f;
+            } 
+            if (elapsedTime > spawnTime) {
+                SpawnObj();
+                spawnTime = elapsedTime + timeBetweenSpawn;
+            }
+        //}
     }
 
-    void SpawnObj(GameObject toSpawn) {
+    void SpawnObj() {
+        int spawnType = UnityEngine.Random.Range(0, 2);
+
+        if (spawnType == 0) {
+            spawnInd = UnityEngine.Random.Range(0, 2);
+        } else {
+            spawnInd = UnityEngine.Random.Range(2, spawnList.Length);
+        }
+
         float randomX = UnityEngine.Random.Range(minX, maxX);
+        string[] ys = spawnYBounds[spawnInd].Split(",");
+        float minY = float.Parse(ys[0]);
+        float maxY = float.Parse(ys[1]);
         float randomY = UnityEngine.Random.Range(minY, maxY);
 
-        Instantiate(toSpawn, new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
+        Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
     }
 }
