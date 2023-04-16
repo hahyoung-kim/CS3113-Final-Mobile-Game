@@ -77,7 +77,6 @@ public class Player : MonoBehaviour
     void Update()
     {
         grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
-        print("grounded " + grounded);
         for (int i = 0; i < Input.touchCount; ++i){
 
             Touch touch = Input.GetTouch(i);
