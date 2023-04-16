@@ -30,8 +30,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {   
         _audioSource = GetComponent<AudioSource>();
+        carrots = PlayerPrefs.GetInt("carrots", 0);
         //livesUI.text = "Lives: " + lives;  
         //reduceHealthUI.text = "-1";
+    }
+
+    public void FixedUpdate(){
+        PlayerPrefs.SetInt("carrots", carrots);
+        print(carrots);
     }
 
     public void loseLife(int lostLife){

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class UI_Shop : MonoBehaviour
 {
-    private int maxLvl;
+     private int maxLvl;
+     public TextMeshProUGUI coinsUI;
 
      public static int magnet;
      public static int magnetLvl;
@@ -14,6 +16,7 @@ public class UI_Shop : MonoBehaviour
      public static int shieldLvl;
      public static int coinMul;
      public static int coinMulLvl;
+     public static int carrots;
 
     void Start()
     {
@@ -25,6 +28,7 @@ public class UI_Shop : MonoBehaviour
         shieldLvl = PlayerPrefs.GetInt("shieldLvl", 0);
         coinMul = PlayerPrefs.GetInt("coinMul", 0);
         coinMulLvl = PlayerPrefs.GetInt("coinMulLvl", 0);
+        carrots = PlayerPrefs.GetInt("carrots", 0);
     }
 
     public void magnetButton(){
@@ -35,6 +39,7 @@ public class UI_Shop : MonoBehaviour
         else if (magnetLvl <= maxLvl){
             PlayerPrefs.SetInt("magnetLvl", magnetLvl+1);
         }
+        print(magnetLvl);
     }
 
     public void boostButton(){
@@ -65,5 +70,9 @@ public class UI_Shop : MonoBehaviour
         else if (coinMulLvl <= maxLvl){
             PlayerPrefs.SetInt("coinMulLvl", coinMulLvl+1);
         }
+    }
+
+    public void back1(){
+        //to load main screen
     }
 }
