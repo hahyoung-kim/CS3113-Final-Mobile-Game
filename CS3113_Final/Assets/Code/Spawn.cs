@@ -7,7 +7,7 @@ public class Spawn : MonoBehaviour
 {
     public GameObject[] spawnList;
     public string[] spawnYBounds;
-    //GameManager _gameManager;
+    GameManager _gameManager;
 
     public float maxX;
     public float minX;
@@ -20,6 +20,7 @@ public class Spawn : MonoBehaviour
     private float startTime;
     private float elapsedTime;
     private int spawnInd;
+    private bool start = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,14 +29,20 @@ public class Spawn : MonoBehaviour
         ogMinX = minX;
         ogMaxX = maxX;
         startTime = Time.time;
-        //_gameManager = GameObject.FindObjectOfType<GameManager>();
+        _gameManager = GameObject.FindObjectOfType<GameManager>();
+        StartCoroutine(WaitSpawn());
+    }
+
+    public IEnumerator WaitSpawn(){
+        yield return new WaitForSeconds(3.5f);
+        start = true;
     }
 
 
     // Update is called once per frame
     void Update()
     {
-        //if (_gameManager.GetLives() > 0) {
+        if (_gameManager.GetLives() > 0 && start) {
             elapsedTime = Time.time - startTime;
             if (elapsedTime >= 1) {
                 timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
@@ -56,7 +63,7 @@ public class Spawn : MonoBehaviour
                 SpawnObj();
                 spawnTime = elapsedTime + timeBetweenSpawn;
             }
-        //}
+        }
     }
 
     void SpawnObj() {

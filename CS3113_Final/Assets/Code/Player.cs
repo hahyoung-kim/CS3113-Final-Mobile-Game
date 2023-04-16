@@ -6,7 +6,7 @@ using System;
 
 public class Player : MonoBehaviour
 {
-    public int speed = 2;
+    public int speed = 3;
     public int jumpForce = 650;
     int bulletSpeed = 600;
     private Rigidbody2D _rigidbody;
@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
     public Transform feet;
     public Transform camera;
+    private bool canFly = false;
  
     bool grounded = false;
 
@@ -31,18 +32,24 @@ public class Player : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         _audioSource = GetComponent<AudioSource>();
+        StartCoroutine(WaitFly());
+
     }
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0) && canFly){
             _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
             _rigidbody.velocity *= 0.50f;
         }
-        if (transform.position.x - camera.position.x <= -2.8f)
+        if (transform.position.x - camera.position.x <= -3.5f) {
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
+        } 
+        else if (transform.position.x - camera.position.x >= -2.7f && grounded) {
+            _rigidbody.velocity = new Vector2(-speed,_rigidbody.velocity.y);
+        }
 
         // float xScale = transform.localScale.x;
         // if ((xSpeed < 0 && xScale > 0) || (xSpeed > 0 && xScale < 1))
@@ -64,6 +71,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public IEnumerator WaitFly(){
+        yield return new WaitForSeconds(2.5f);
+        canFly = true;
+    }
+
     IEnumerator FlashRed() {
         _renderer.color = Color.red;
         yield return new WaitForSeconds(.1f);
@@ -72,11 +84,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
         for (int i = 0; i < Input.touchCount; ++i){
 
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
-            if (touch.phase == TouchPhase.Stationary){ // did not test yet
+            if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
                 _rigidbody.AddForce(new Vector2(0, jumpForce));
             }
         }
