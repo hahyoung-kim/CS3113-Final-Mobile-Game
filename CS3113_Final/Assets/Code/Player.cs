@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     public LayerMask whatIsGround;
     public Transform feet;
     public Transform camera;
+    private bool canFly = false;
  
     bool grounded = false;
 
@@ -31,11 +32,13 @@ public class Player : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         _audioSource = GetComponent<AudioSource>();
+        StartCoroutine(WaitFly());
+
     }
 
     void FixedUpdate()
     {
-        if (Input.GetMouseButton(0)){
+        if (Input.GetMouseButton(0) && canFly){
             _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
@@ -68,6 +71,11 @@ public class Player : MonoBehaviour
         }
     }
 
+    public IEnumerator WaitFly(){
+        yield return new WaitForSeconds(2.5f);
+        canFly = true;
+    }
+
     IEnumerator FlashRed() {
         _renderer.color = Color.red;
         yield return new WaitForSeconds(.1f);
@@ -81,7 +89,7 @@ public class Player : MonoBehaviour
 
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
-            if (touch.phase == TouchPhase.Stationary){ // did not test yet
+            if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
                 _rigidbody.AddForce(new Vector2(0, jumpForce));
             }
         }

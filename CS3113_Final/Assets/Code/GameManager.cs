@@ -37,7 +37,6 @@ public class GameManager : MonoBehaviour
 
     public void FixedUpdate(){
         PlayerPrefs.SetInt("carrots", carrots);
-        print(carrots);
     }
 
     public void loseLife(int lostLife){
@@ -95,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     public void AddCarrots(int num) {
         carrots += num;
+        print(carrots);
     }
 
     public void Update()
