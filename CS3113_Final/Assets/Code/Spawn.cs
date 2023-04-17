@@ -50,14 +50,14 @@ public class Spawn : MonoBehaviour
                 maxX = ogMaxX - (float)(Math.Log(elapsedTime));
             }
             
-            if (minX < 10) {
-                minX = 10;
+            if (minX < 12) {
+                minX = 12;
             }
-            if (maxX < 10) {
-                maxX = 10;
+            if (maxX < 15) {
+                maxX = 15;
             }
-            if (timeBetweenSpawn < 0.5f) {
-                timeBetweenSpawn = 0.5f;
+            if (timeBetweenSpawn < 1f) {
+                timeBetweenSpawn = 1f;
             } 
             if (elapsedTime > spawnTime) {
                 SpawnObj();
@@ -69,9 +69,11 @@ public class Spawn : MonoBehaviour
     void SpawnObj() {
         int spawnType = UnityEngine.Random.Range(0, 2);
 
-        if (spawnType == 0) {
+        // 50% thorns
+        if (spawnType == 0) {                               
             spawnInd = UnityEngine.Random.Range(0, 2);
-        } else {
+        } 
+        else {  // 50% chance carrots                              
             spawnInd = UnityEngine.Random.Range(2, spawnList.Length);
         }
 
@@ -79,7 +81,23 @@ public class Spawn : MonoBehaviour
         string[] ys = spawnYBounds[spawnInd].Split(",");
         float minY = float.Parse(ys[0]);
         float maxY = float.Parse(ys[1]);
-        float randomY = UnityEngine.Random.Range(minY, maxY);
+
+        float randomY;
+
+        // if thorns
+        if (spawnInd <= 1) {                                 
+            int ySect = UnityEngine.Random.Range(0, 20);
+            // 35% chance spawn at bottom
+            if (ySect < 7) { 
+                randomY = UnityEngine.Random.Range(minY, minY+.8f);
+            } else if (ySect < 13) {    // 30% chance spawn at middle
+                randomY = UnityEngine.Random.Range(-.4f,.7f);
+            } else {    // 35% chance spawn at top
+                randomY = UnityEngine.Random.Range(maxY-.8f, maxY+.2f);
+            }
+        } else {
+            randomY = UnityEngine.Random.Range(minY, maxY);
+        }
 
         Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
     }
