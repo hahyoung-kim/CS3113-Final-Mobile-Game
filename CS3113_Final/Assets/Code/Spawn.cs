@@ -8,6 +8,12 @@ public class Spawn : MonoBehaviour
     public GameObject[] spawnList;
     public string[] spawnYBounds;
     GameManager _gameManager;
+    public int thornsMinInd;
+    public int thornsMaxInd;
+    public int carrotsMinInd;
+    public int carrotsMaxInd;
+    public int powersMinInd;
+    public int powersMaxInd;
 
     public float maxX;
     public float minX;
@@ -67,15 +73,18 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnObj() {
-        int spawnType = UnityEngine.Random.Range(0, 2);
+        int spawnType = UnityEngine.Random.Range(0, 20);
 
-        // 50% thorns
-        if (spawnType == 0) {                               
-            spawnInd = UnityEngine.Random.Range(0, 2);
+        // 45% thorns
+        if (spawnType <= 8) {                               
+            spawnInd = UnityEngine.Random.Range(thornsMinInd, thornsMaxInd + 1);
         } 
-        else {  // 50% chance carrots                              
-            spawnInd = UnityEngine.Random.Range(2, spawnList.Length);
+        else if (spawnType <= 18) {  // 50% chance carrots                              
+            spawnInd = UnityEngine.Random.Range(carrotsMinInd, carrotsMaxInd + 1);
+        } else { // 5% chance power ups
+            spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
         }
+        print("spawn ind " + spawnInd);
 
         float randomX = UnityEngine.Random.Range(minX, maxX);
         string[] ys = spawnYBounds[spawnInd].Split(",");
@@ -85,7 +94,7 @@ public class Spawn : MonoBehaviour
         float randomY;
 
         // if thorns
-        if (spawnInd <= 1) {                                 
+        if (spawnInd <= thornsMaxInd) {                                 
             int ySect = UnityEngine.Random.Range(0, 20);
             // 35% chance spawn at bottom
             if (ySect < 7) { 

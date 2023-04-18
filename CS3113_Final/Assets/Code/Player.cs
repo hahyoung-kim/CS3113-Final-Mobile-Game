@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Animator _animator; 
     private SpriteRenderer _renderer;
+    public Sprite[] spriteArray;
     public string currLvl = "Level1";
     GameManager _gameManager;
     AudioSource _audioSource;
@@ -21,6 +22,7 @@ public class Player : MonoBehaviour
     public Transform feet;
     public Transform camera;
     private bool canFly = false;
+    
  
     bool grounded = false;
 
@@ -39,10 +41,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetMouseButton(0) && canFly){
-            _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
+            _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
-            _rigidbody.velocity *= 0.4f;
+            _rigidbody.velocity *= 0.5f;
         }
         if (transform.position.x - camera.position.x <= -3.5f) {
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
@@ -68,6 +70,21 @@ public class Player : MonoBehaviour
             _audioSource.PlayOneShot(pickupSound);
             Destroy(other.gameObject);
             _gameManager.AddCarrots(1);
+        } else if (other.CompareTag("Magnet")){
+            //_audioSource.PlayOneShot();
+            _renderer.sprite = spriteArray[0]; 
+            //_animator.SetBool("Magnet", true);
+            Destroy(other.gameObject);
+        } else if (other.CompareTag("Ghost")){
+            //_audioSource.PlayOneShot();
+            _renderer.sprite = spriteArray[1]; 
+            //_animator.SetBool("Ghost", true);
+            Destroy(other.gameObject);
+        } else if (other.CompareTag("Star")){
+            //_audioSource.PlayOneShot();
+            _renderer.sprite = spriteArray[2]; 
+            //_animator.SetBool("Star", true);
+            Destroy(other.gameObject);
         }
     }
 
@@ -90,7 +107,7 @@ public class Player : MonoBehaviour
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
             if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
-                _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
+                _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
             }
         }
     }

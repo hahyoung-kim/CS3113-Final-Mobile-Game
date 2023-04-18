@@ -2984,6 +2984,8 @@ MonoBehaviour:
   - {fileID: 1930974273074504715, guid: cdb18947c5cdf744d92ab74a2a852bd1, type: 3}
   - {fileID: 7830506948979057214, guid: ed59205b740a9744e84394e7026db141, type: 3}
   - {fileID: 135186944814547732, guid: c7423412521501c488d0a5a73b6c8c97, type: 3}
+  - {fileID: 4608231812430839289, guid: 5071d4f8119218349ab889e3d486dbda, type: 3}
+  - {fileID: 3137565309665518019, guid: 1aa33cbab9c41724b8c4bd2e896f02a3, type: 3}
   spawnYBounds:
   - -2.7,2.5
   - -2.7,2.5
@@ -2992,6 +2994,14 @@ MonoBehaviour:
   - -4.0,3.0
   - -4.3,1.3
   - -4.0,4.25
+  - -3.8,4.0
+  - -4.0,4.0
+  thornsMinInd: 0
+  thornsMaxInd: 1
+  carrotsMinInd: 2
+  carrotsMaxInd: 6
+  powersMinInd: 7
+  powersMaxInd: 8
   maxX: 20
   minX: 16
   timeBetweenSpawn: 3
@@ -9572,6 +9582,22 @@ PrefabInstance:
       propertyPath: whatIsGround.m_Bits
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spriteArray.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spriteArray.Array.data[0]
+      value: 
+      objectReference: {fileID: 307022365, guid: ff643d47879310543b2e0ccb90279ddf, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spriteArray.Array.data[1]
+      value: 
+      objectReference: {fileID: 1284432763, guid: 08a631460f57c2349a1ef124a3be06d6, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spriteArray.Array.data[2]
+      value: 
+      objectReference: {fileID: -1442342647, guid: b602a0d8da4d4c847a1ea7524dc47b81, type: 3}
     - target: {fileID: 3383342645424960873, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: m_RootOrder
       value: 1

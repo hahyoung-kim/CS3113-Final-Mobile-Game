@@ -7,6 +7,9 @@ TagManager:
   - Carrot
   - Enemy
   - Kill
+  - Ghost
+  - Star
+  - Magnet
   layers:
   - Default
   - TransparentFX
