@@ -39,10 +39,10 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetMouseButton(0) && canFly){
-            _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
+            _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
-            _rigidbody.velocity *= 0.50f;
+            _rigidbody.velocity *= 0.4f;
         }
         if (transform.position.x - camera.position.x <= -3.5f) {
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
             if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
-                _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
+                _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
             }
         }
     }
