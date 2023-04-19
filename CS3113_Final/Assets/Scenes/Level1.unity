@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &20722301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9415,7 +9415,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -50.85034, w: 0}
+  m_margin: {x: 0, y: 0, z: -280.12317, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9742,9 +9742,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 519420032}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerUI
+      value: 
+      objectReference: {fileID: 20722300}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: hurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 790e6066e400fc040a6c6b29a8145317, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerIcon
+      value: 
+      objectReference: {fileID: 1193870184}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerText
+      value: 
+      objectReference: {fileID: 1956811899}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: pickupSound
       value: 
@@ -9754,9 +9766,25 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerIcons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.size
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9fc7485dfd49336429340b78b5e085ed, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: f087945ecc455564bab0771c18a1b4df, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 7191765ec16ca5e49afbb07ec834daa4, type: 3}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.data[0]
       value: 

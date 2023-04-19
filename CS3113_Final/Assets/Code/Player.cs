@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using TMPro;
 using System;
 
 public class Player : MonoBehaviour
@@ -22,7 +24,10 @@ public class Player : MonoBehaviour
     public Transform feet;
     public Transform camera;
     private bool canFly = false;
-    
+    public GameObject powerUI;
+    public TextMeshProUGUI powerText;
+    public Image powerIcon;
+    public Sprite[] powerIcons;
  
     bool grounded = false;
 
@@ -34,6 +39,7 @@ public class Player : MonoBehaviour
         _renderer = GetComponent<SpriteRenderer>();
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         _audioSource = GetComponent<AudioSource>();
+        powerUI.SetActive(false); 
         StartCoroutine(WaitFly());
 
     }
@@ -75,17 +81,32 @@ public class Player : MonoBehaviour
             _renderer.sprite = spriteArray[0]; 
             //_animator.SetBool("Magnet", true);
             Destroy(other.gameObject);
+            powerIcon.sprite = powerIcons[0];
+            powerText.text = "Magnet Bunny";
+            StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Ghost")){
             //_audioSource.PlayOneShot();
             _renderer.sprite = spriteArray[1]; 
             //_animator.SetBool("Ghost", true);
             Destroy(other.gameObject);
+            powerIcon.sprite = powerIcons[1];
+            powerText.text = "Ghost Bunny";
+            StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Star")){
             //_audioSource.PlayOneShot();
             _renderer.sprite = spriteArray[2]; 
             //_animator.SetBool("Star", true);
             Destroy(other.gameObject);
+            powerIcon.sprite = powerIcons[2];
+            powerText.text = "Rainbow Bunny";
+            StartCoroutine(DisplayPowerUI());
         }
+    }
+
+    IEnumerator DisplayPowerUI() {
+        powerUI.SetActive(true); 
+        yield return new WaitForSeconds(2);
+        powerUI.SetActive(false); 
     }
 
     public IEnumerator WaitFly(){
