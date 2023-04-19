@@ -44,7 +44,7 @@ public class Player : MonoBehaviour
             _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
-            _rigidbody.velocity *= 0.5f;
+            //_rigidbody.velocity *= 0.5f;
         }
         if (transform.position.x - camera.position.x <= -3.5f) {
             _rigidbody.velocity = new Vector2(speed,_rigidbody.velocity.y);
