@@ -9235,7 +9235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c942f7cede4b95043bb1ffa7ecca7f84, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 3
+  lives: 1
   currLvl: Level1
   gameOverLevel: Level1
   player: {fileID: 1203076797}
@@ -9789,6 +9789,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 20722300}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spawner
+      value: 
+      objectReference: {fileID: 1532490011}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: hurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 790e6066e400fc040a6c6b29a8145317, type: 3}
@@ -9800,6 +9804,10 @@ PrefabInstance:
       propertyPath: powerText
       value: 
       objectReference: {fileID: 1956811899}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: obsRemover
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: pickupSound
       value: 

@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private bool isGh = false;
     private bool hasMag = false;
     private bool isRb = false;
+    private bool removeObstacles = false;
+    private bool isPaused = false;
 
     private void Awake()
     {
@@ -101,6 +103,10 @@ public class GameManager : MonoBehaviour
         print(carrots);
     }
 
+    public void SetObsRem(bool b) {
+        removeObstacles = b;
+    }
+
     public void SetMagnet(bool b) {
         hasMag = b;
     }
@@ -123,6 +129,14 @@ public class GameManager : MonoBehaviour
 
     public bool IsRainbow() {
         return isRb;
+    }
+
+    public void SetPause(bool b) {
+        isPaused = b;
+    }
+
+    public bool IsPaused() {
+        return isPaused;
     }
 
     public void Update()

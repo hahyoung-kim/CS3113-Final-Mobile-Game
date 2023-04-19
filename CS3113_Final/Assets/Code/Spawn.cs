@@ -27,6 +27,7 @@ public class Spawn : MonoBehaviour
     private float elapsedTime;
     private int spawnInd;
     private bool start = false;
+    private ArrayList spawned = new ArrayList(); 
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +49,7 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_gameManager.GetLives() > 0 && start) {
+        if (_gameManager.GetLives() > 0 && start && !_gameManager.IsPaused()) {
             elapsedTime = Time.time - startTime;
             if (elapsedTime >= 1) {
                 timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
@@ -120,6 +121,15 @@ public class Spawn : MonoBehaviour
             randomY = UnityEngine.Random.Range(minY, maxY);
         }
 
-        Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
+        GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
+        spawned.Add(spawnedPrefab);
+    }
+
+    public void DeleteObstacles() {
+        foreach (GameObject g in spawned) {
+            if (g != null && g.gameObject.tag == "Enemy") {
+                Destroy(g.gameObject);
+            }
+        }
     }
 }

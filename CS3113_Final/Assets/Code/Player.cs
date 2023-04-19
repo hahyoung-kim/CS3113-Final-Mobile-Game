@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI powerText;
     public Image powerIcon;
     public Sprite[] powerIcons;
+    public GameObject spawner;
+    RigidbodyConstraints2D ogConst;
  
     bool grounded = false;
     
@@ -44,12 +46,18 @@ public class Player : MonoBehaviour
         _gameManager = GameObject.FindObjectOfType<GameManager>();
         _audioSource = GetComponent<AudioSource>();
         powerUI.SetActive(false); 
+        ogConst = _rigidbody.constraints;
         StartCoroutine(WaitFly());
 
     }
 
     void FixedUpdate()
     {
+        if (_gameManager.IsPaused()) {
+            _rigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
+        } else {
+            _rigidbody.constraints = ogConst;
+        }
         if (Input.GetMouseButton(0) && canFly){
             _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
         } 
@@ -83,9 +91,10 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Magnet")){
             //_audioSource.PlayOneShot();
             mags += 1;
+            spawner.GetComponent<Spawn>().DeleteObstacles();
             _renderer.sprite = spriteArray[1]; 
             //_animator.SetBool("Magnet", true);
-            StartCoroutine(ActivateMagnet(8));
+            StartCoroutine(ActivateMagnet(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[0];
             powerText.text = "Magnet Bunny";
@@ -93,9 +102,10 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Ghost")){
             //_audioSource.PlayOneShot();
             ghosts += 1;
+            spawner.GetComponent<Spawn>().DeleteObstacles();
             _renderer.sprite = spriteArray[2]; 
             //_animator.SetBool("Ghost", true);
-            StartCoroutine(ActivateGhost(8));
+            StartCoroutine(ActivateGhost(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[1];
             powerText.text = "Ghost Bunny";
@@ -103,9 +113,10 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Star")){
             //_audioSource.PlayOneShot();
             rainbows += 1;
+            spawner.GetComponent<Spawn>().DeleteObstacles();
             _renderer.sprite = spriteArray[3]; 
             //_animator.SetBool("Star", true);
-            StartCoroutine(ActivateRainbow(8));
+            StartCoroutine(ActivateRainbow(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[2];
             powerText.text = "Rainbow Bunny";
@@ -149,8 +160,6 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(.2f);
             _gameManager.SetGhost(false);
         }
-
-        
     }
 
     IEnumerator ActivateRainbow(float secs) {
@@ -187,8 +196,10 @@ public class Player : MonoBehaviour
 
     IEnumerator DisplayPowerUI() {
         powerUI.SetActive(true); 
-        yield return new WaitForSeconds(2);
+        _gameManager.SetPause(true);
+        yield return new WaitForSeconds(1.5f);
         powerUI.SetActive(false); 
+        _gameManager.SetPause(false);
     }
 
     public IEnumerator WaitFly(){
@@ -209,7 +220,7 @@ public class Player : MonoBehaviour
 
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
-            if (touch.phase == TouchPhase.Stationary && canFly){
+            if (touch.phase == TouchPhase.Stationary && canFly && !_gameManager.IsPaused()){
                 _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
             }
         }
