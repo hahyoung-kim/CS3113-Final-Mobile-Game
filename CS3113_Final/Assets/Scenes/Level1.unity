@@ -9812,7 +9812,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: powerIcons.Array.data[0]
@@ -9829,13 +9829,17 @@ PrefabInstance:
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.data[0]
       value: 
-      objectReference: {fileID: 307022365, guid: ff643d47879310543b2e0ccb90279ddf, type: 3}
+      objectReference: {fileID: 163201081, guid: 97990ee409438b74fbc36c9a6598dc93, type: 3}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.data[1]
       value: 
-      objectReference: {fileID: 1284432763, guid: 08a631460f57c2349a1ef124a3be06d6, type: 3}
+      objectReference: {fileID: 307022365, guid: ff643d47879310543b2e0ccb90279ddf, type: 3}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: spriteArray.Array.data[2]
+      value: 
+      objectReference: {fileID: 1284432763, guid: 08a631460f57c2349a1ef124a3be06d6, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: spriteArray.Array.data[3]
       value: 
       objectReference: {fileID: -1442342647, guid: b602a0d8da4d4c847a1ea7524dc47b81, type: 3}
     - target: {fileID: 3383342645424960873, guid: c7558c63d3490844aab604706d16b37a, type: 3}

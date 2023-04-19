@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
  
     bool grounded = false;
     
+    private int mags = 0;
+    private int ghosts = 0;
+    private int rainbows = 0;
 
 
     void Start()
@@ -79,7 +82,8 @@ public class Player : MonoBehaviour
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             //_audioSource.PlayOneShot();
-            _renderer.sprite = spriteArray[0]; 
+            mags += 1;
+            _renderer.sprite = spriteArray[1]; 
             //_animator.SetBool("Magnet", true);
             StartCoroutine(ActivateMagnet(8));
             Destroy(other.gameObject);
@@ -88,7 +92,8 @@ public class Player : MonoBehaviour
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Ghost")){
             //_audioSource.PlayOneShot();
-            _renderer.sprite = spriteArray[1]; 
+            ghosts += 1;
+            _renderer.sprite = spriteArray[2]; 
             //_animator.SetBool("Ghost", true);
             StartCoroutine(ActivateGhost(8));
             Destroy(other.gameObject);
@@ -97,7 +102,8 @@ public class Player : MonoBehaviour
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Star")){
             //_audioSource.PlayOneShot();
-            _renderer.sprite = spriteArray[2]; 
+            rainbows += 1;
+            _renderer.sprite = spriteArray[3]; 
             //_animator.SetBool("Star", true);
             StartCoroutine(ActivateRainbow(8));
             Destroy(other.gameObject);
@@ -110,65 +116,73 @@ public class Player : MonoBehaviour
     IEnumerator ActivateMagnet(float secs) {
         _gameManager.SetMagnet(true);
         yield return new WaitForSeconds(secs);
-         _gameManager.SetMagnet(false);
+        mags -= 1;
+        if (mags <= 0 )
+            _gameManager.SetMagnet(false);
     }
 
     IEnumerator ActivateGhost(float secs) {
         _gameManager.SetGhost(true);
         yield return new WaitForSeconds(secs);
+        ghosts -= 1;
+        if (ghosts <= 0 ) {
+            // using a for loop doesnt work so i had to hard code this lol...
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _gameManager.SetGhost(false);
+        }
 
-        // using a for loop doesnt work so i had to hard code this lol...
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-
-        _gameManager.SetGhost(false);
+        
     }
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
+        rainbows -= 1;
+        if (rainbows <= 0 ) {
+            // using a for loop doesnt work so i had to hard code this lol...
+            yield return new WaitForSeconds(secs);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.gray;
+            yield return new WaitForSeconds(.2f);
+            _renderer.color = Color.white;
+            yield return new WaitForSeconds(.2f);
+            _gameManager.SetRainbow(false);
+        }
 
-        // using a for loop doesnt work so i had to hard code this lol...
-        yield return new WaitForSeconds(secs);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-
-        _gameManager.SetRainbow(false);
+        
     }
 
     IEnumerator DisplayPowerUI() {
@@ -195,7 +209,7 @@ public class Player : MonoBehaviour
 
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
-            if (touch.phase == TouchPhase.Stationary && canFly){ // did not test yet
+            if (touch.phase == TouchPhase.Stationary && canFly){
                 _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
             }
         }

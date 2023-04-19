@@ -75,7 +75,7 @@ public class Spawn : MonoBehaviour
     void SpawnObj() {
         int spawnType = UnityEngine.Random.Range(0, 20);
 
-        /*
+        
         // 45% thorns
         if (spawnType <= 8) {                               
             spawnInd = UnityEngine.Random.Range(thornsMinInd, thornsMaxInd + 1);
@@ -85,8 +85,9 @@ public class Spawn : MonoBehaviour
         } else { // 5% chance power ups
             spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
         }
-        */
+        
 
+        /*
         // 40% chance thorns
         if (spawnType <= 8) {                               
             spawnInd = UnityEngine.Random.Range(thornsMinInd, thornsMaxInd + 1);
@@ -96,7 +97,7 @@ public class Spawn : MonoBehaviour
         } else { // 10% chance power ups
             spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
         }
-        
+        */
 
         float randomX = UnityEngine.Random.Range(minX, maxX);
         string[] ys = spawnYBounds[spawnInd].Split(",");
