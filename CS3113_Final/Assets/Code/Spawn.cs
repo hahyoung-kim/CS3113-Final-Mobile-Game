@@ -63,14 +63,14 @@ public class Spawn : MonoBehaviour
                 maxX = ogMaxX - (float)(Math.Log(player.transform.position.x));
             }
             
-            if (minX < 11.75f) {
-                minX = 11.75f;
+            if (minX < 12) {
+                minX = 12;
             }
             if (maxX < 12) {
                 maxX = 12;
             }
-            if (timeBetweenSpawn < 0.5f) {
-                timeBetweenSpawn = 0.5f;
+            if (timeBetweenSpawn < 0.75f) {
+                timeBetweenSpawn = 0.75f;
             } 
             if (elapsedTime > spawnTime) {
                 SpawnObj();
@@ -121,6 +121,7 @@ public class Spawn : MonoBehaviour
             randomY = UnityEngine.Random.Range(minY, maxY);
         }
 
+        print(randomX);
         GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
         spawned.Add(spawnedPrefab);
     }

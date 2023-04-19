@@ -21,7 +21,7 @@ public class CameraMovement : MonoBehaviour
                 cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 5);
                 transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
             } else {
-                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.5f);
+                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.6f);
                 transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
             }
             
