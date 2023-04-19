@@ -3087,6 +3087,7 @@ MonoBehaviour:
   - {fileID: 135186944814547732, guid: c7423412521501c488d0a5a73b6c8c97, type: 3}
   - {fileID: 4608231812430839289, guid: 5071d4f8119218349ab889e3d486dbda, type: 3}
   - {fileID: 3137565309665518019, guid: 1aa33cbab9c41724b8c4bd2e896f02a3, type: 3}
+  - {fileID: 5446419589921262065, guid: 77a181f851a0c1e4ba8d213a8030e5f7, type: 3}
   spawnYBounds:
   - -2.7,2.5
   - -2.7,2.5
@@ -3097,12 +3098,13 @@ MonoBehaviour:
   - -4.0,4.25
   - -3.8,4.0
   - -4.0,4.0
+  - -4.0,4.0
   thornsMinInd: 0
   thornsMaxInd: 1
   carrotsMinInd: 2
   carrotsMaxInd: 6
   powersMinInd: 7
-  powersMaxInd: 8
+  powersMaxInd: 9
   maxX: 20
   minX: 16
   timeBetweenSpawn: 3

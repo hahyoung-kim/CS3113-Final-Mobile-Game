@@ -85,7 +85,6 @@ public class Spawn : MonoBehaviour
         } else { // 5% chance power ups
             spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
         }
-        
 
         /*
         // 40% chance thorns
