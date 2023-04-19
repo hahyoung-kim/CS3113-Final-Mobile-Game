@@ -28,6 +28,7 @@ public class Spawn : MonoBehaviour
     private int spawnInd;
     private bool start = false;
     private ArrayList spawned = new ArrayList(); 
+    private bool spawnPower = true;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,11 @@ public class Spawn : MonoBehaviour
         start = true;
     }
 
+    public IEnumerator PowerCooldown(){
+        spawnPower = false;
+        yield return new WaitForSeconds(5);
+        spawnPower = true;
+    }
 
     // Update is called once per frame
     void Update()
@@ -52,19 +58,19 @@ public class Spawn : MonoBehaviour
         if (_gameManager.GetLives() > 0 && start && !_gameManager.IsPaused()) {
             elapsedTime = Time.time - startTime;
             if (elapsedTime >= 1) {
-                timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.6);
-                minX = ogMinX - (float)(Math.Log(elapsedTime));
-                maxX = ogMaxX - (float)(Math.Log(elapsedTime));
+                timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.3);
+                minX = ogMinX - (float)(Math.Log(player.transform.position.x));
+                maxX = ogMaxX - (float)(Math.Log(player.transform.position.x));
             }
             
-            if (minX < 12) {
-                minX = 12;
+            if (minX < 11.75f) {
+                minX = 11.75f;
             }
-            if (maxX < 15) {
-                maxX = 15;
+            if (maxX < 12) {
+                maxX = 12;
             }
-            if (timeBetweenSpawn < 1f) {
-                timeBetweenSpawn = 1f;
+            if (timeBetweenSpawn < 0.5f) {
+                timeBetweenSpawn = 0.5f;
             } 
             if (elapsedTime > spawnTime) {
                 SpawnObj();
@@ -76,28 +82,22 @@ public class Spawn : MonoBehaviour
     void SpawnObj() {
         int spawnType = UnityEngine.Random.Range(0, 20);
 
-        
-        // 45% thorns
-        if (spawnType <= 8) {                               
-            spawnInd = UnityEngine.Random.Range(thornsMinInd, thornsMaxInd + 1);
-        } 
-        else if (spawnType <= 18) {  // 50% chance carrots                              
+        // 5% chance power ups if not currently used
+        if (spawnType <= 0 && spawnPower) {
+            if (_gameManager.HasMagnet()) {
+                spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd);
+            } else if (_gameManager.IsGhost() || _gameManager.IsRainbow()) {
+                spawnInd = powersMaxInd;
+            } else {
+                spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
+            }
+            StartCoroutine(PowerCooldown());
+            
+        } else if (spawnType <= 9) {  // 45% chance carrots                              
             spawnInd = UnityEngine.Random.Range(carrotsMinInd, carrotsMaxInd + 1);
-        } else { // 5% chance power ups
-            spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
-        }
-
-        /*
-        // 40% chance thorns
-        if (spawnType <= 8) {                               
+        } else {    // 50% chance thorns
             spawnInd = UnityEngine.Random.Range(thornsMinInd, thornsMaxInd + 1);
-        } 
-        else if (spawnType <= 17) {  // 40% chance carrots                              
-            spawnInd = UnityEngine.Random.Range(carrotsMinInd, carrotsMaxInd + 1);
-        } else { // 10% chance power ups
-            spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
         }
-        */
 
         float randomX = UnityEngine.Random.Range(minX, maxX);
         string[] ys = spawnYBounds[spawnInd].Split(",");

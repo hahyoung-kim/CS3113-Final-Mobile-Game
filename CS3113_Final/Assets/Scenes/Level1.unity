@@ -3204,7 +3204,7 @@ MonoBehaviour:
   powersMaxInd: 9
   maxX: 20
   minX: 16
-  timeBetweenSpawn: 3
+  timeBetweenSpawn: 2
   player: {fileID: 1203076797}
 --- !u!4 &1532490013
 Transform:

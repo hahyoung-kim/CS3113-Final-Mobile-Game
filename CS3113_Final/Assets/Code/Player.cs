@@ -32,10 +32,6 @@ public class Player : MonoBehaviour
     RigidbodyConstraints2D ogConst;
  
     bool grounded = false;
-    
-    private int mags = 0;
-    private int ghosts = 0;
-    private int rainbows = 0;
 
 
     void Start()
@@ -90,10 +86,7 @@ public class Player : MonoBehaviour
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             //_audioSource.PlayOneShot();
-            mags += 1;
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            _renderer.sprite = spriteArray[1]; 
-            //_animator.SetBool("Magnet", true);
             StartCoroutine(ActivateMagnet(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[0];
@@ -101,10 +94,7 @@ public class Player : MonoBehaviour
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Ghost")){
             //_audioSource.PlayOneShot();
-            ghosts += 1;
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            _renderer.sprite = spriteArray[2]; 
-            //_animator.SetBool("Ghost", true);
             StartCoroutine(ActivateGhost(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[1];
@@ -112,10 +102,7 @@ public class Player : MonoBehaviour
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Star")){
             //_audioSource.PlayOneShot();
-            rainbows += 1;
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            _renderer.sprite = spriteArray[3]; 
-            //_animator.SetBool("Star", true);
             StartCoroutine(ActivateRainbow(10));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[2];
@@ -126,72 +113,140 @@ public class Player : MonoBehaviour
 
     IEnumerator ActivateMagnet(float secs) {
         _gameManager.SetMagnet(true);
+        if (_gameManager.IsGhost()) {
+            // magnet + ghost sprite
+
+        } else if (_gameManager.IsRainbow()) {
+            // magnet + rainbow sprite
+
+        } else {
+            _renderer.sprite = spriteArray[1]; 
+        }
+        
         yield return new WaitForSeconds(secs);
-        mags -= 1;
-        if (mags <= 0 )
-            _gameManager.SetMagnet(false);
+
+        // using a for loop doesnt work so i had to hard code this lol...
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+
+        _gameManager.SetMagnet(false);
+
+        if (_gameManager.IsGhost()) {
+            // ghost sprite
+            _renderer.sprite = spriteArray[2]; 
+        } else if (_gameManager.IsRainbow()) {
+            // rainbow sprite
+            _renderer.sprite = spriteArray[3]; 
+        } else {
+            // default sprite
+           _renderer.sprite = spriteArray[0]; 
+        }
     }
 
     IEnumerator ActivateGhost(float secs) {
         _gameManager.SetGhost(true);
+        if (_gameManager.HasMagnet()) {
+            // magnet + ghost sprite
+            
+        } else {
+            _renderer.sprite = spriteArray[2]; 
+        }
+    
         yield return new WaitForSeconds(secs);
-        ghosts -= 1;
-        if (ghosts <= 0 ) {
-            // using a for loop doesnt work so i had to hard code this lol...
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _gameManager.SetGhost(false);
+
+        // using a for loop doesnt work so i had to hard code this lol...
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+
+        _gameManager.SetGhost(false);
+
+        if (_gameManager.HasMagnet()) {
+            // magnet sprite
+            _renderer.sprite = spriteArray[1]; 
+        } else {
+            // default sprite
+           _renderer.sprite = spriteArray[0]; 
         }
     }
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
-        yield return new WaitForSeconds(secs);
-        rainbows -= 1;
-        if (rainbows <= 0 ) {
-            // using a for loop doesnt work so i had to hard code this lol...
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.gray;
-            yield return new WaitForSeconds(.2f);
-            _renderer.color = Color.white;
-            yield return new WaitForSeconds(.2f);
-            _gameManager.SetRainbow(false);
-        }
+        if (_gameManager.HasMagnet()) {
+            // magnet + rainbow sprite
 
+        } else {
+           _renderer.sprite = spriteArray[3]; 
+        }
         
+        yield return new WaitForSeconds(secs);
+
+        // using a for loop doesnt work so i had to hard code this lol...
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+
+        _gameManager.SetRainbow(false);
+
+        if (_gameManager.HasMagnet()) {
+            // magnet sprite
+            _renderer.sprite = spriteArray[1]; 
+        } else {
+            // default sprite
+           _renderer.sprite = spriteArray[0]; 
+        }
     }
 
     IEnumerator DisplayPowerUI() {
