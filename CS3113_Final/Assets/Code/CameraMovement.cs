@@ -17,8 +17,14 @@ public class CameraMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (GetComponent<GameManager>().GetLives() > 0) {
-            cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.1);
-            transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+            if (GetComponent<GameManager>().IsRainbow()) {
+                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 5);
+                transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+            } else {
+                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.1);
+                transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
+            }
+            
         }
         
     }
