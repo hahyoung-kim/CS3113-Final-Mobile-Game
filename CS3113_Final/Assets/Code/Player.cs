@@ -164,10 +164,10 @@ public class Player : MonoBehaviour
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
+        yield return new WaitForSeconds(secs);
         rainbows -= 1;
         if (rainbows <= 0 ) {
             // using a for loop doesnt work so i had to hard code this lol...
-            yield return new WaitForSeconds(secs);
             _renderer.color = Color.gray;
             yield return new WaitForSeconds(.2f);
             _renderer.color = Color.white;
