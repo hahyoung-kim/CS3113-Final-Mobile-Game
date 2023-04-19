@@ -18,6 +18,10 @@ public class GameManager : MonoBehaviour
     AudioSource _audioSource;
     public GameObject player;
 
+    private bool isGh = false;
+    private bool hasMag = false;
+    private bool isRb = false;
+
     private void Awake()
     {
         if(GameObject.FindObjectsOfType<GameManager>().Length > 1)
@@ -95,6 +99,30 @@ public class GameManager : MonoBehaviour
     public void AddCarrots(int num) {
         carrots += num;
         print(carrots);
+    }
+
+    public void SetMagnet(bool b) {
+        hasMag = b;
+    }
+
+    public void SetGhost(bool b) {
+        isGh = b;
+    }
+
+    public void SetRainbow(bool b) {
+        isRb = b;
+    }
+
+    public bool HasMagnet() {
+        return hasMag;
+    }
+
+    public bool IsGhost() {
+        return isGh;
+    }
+
+    public bool IsRainbow() {
+        return isRb;
     }
 
     public void Update()

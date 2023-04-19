@@ -30,6 +30,7 @@ public class Player : MonoBehaviour
     public Sprite[] powerIcons;
  
     bool grounded = false;
+    
 
 
     void Start()
@@ -68,7 +69,7 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Enemy")) {
+        if (other.CompareTag("Enemy") && !_gameManager.IsRainbow() && !_gameManager.IsGhost()) {
             _audioSource.PlayOneShot(hurtSound);
             _gameManager.loseLife(1);
             StartCoroutine(FlashRed());
@@ -80,6 +81,7 @@ public class Player : MonoBehaviour
             //_audioSource.PlayOneShot();
             _renderer.sprite = spriteArray[0]; 
             //_animator.SetBool("Magnet", true);
+            StartCoroutine(ActivateMagnet(8));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[0];
             powerText.text = "Magnet Bunny";
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
             //_audioSource.PlayOneShot();
             _renderer.sprite = spriteArray[1]; 
             //_animator.SetBool("Ghost", true);
+            StartCoroutine(ActivateGhost(8));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[1];
             powerText.text = "Ghost Bunny";
@@ -96,11 +99,30 @@ public class Player : MonoBehaviour
             //_audioSource.PlayOneShot();
             _renderer.sprite = spriteArray[2]; 
             //_animator.SetBool("Star", true);
+            StartCoroutine(ActivateRainbow(8));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[2];
             powerText.text = "Rainbow Bunny";
             StartCoroutine(DisplayPowerUI());
         }
+    }
+
+    IEnumerator ActivateMagnet(float secs) {
+        _gameManager.SetMagnet(true);
+        yield return new WaitForSeconds(secs);
+         _gameManager.SetMagnet(false);
+    }
+
+    IEnumerator ActivateGhost(float secs) {
+        _gameManager.SetGhost(true);
+        yield return new WaitForSeconds(secs);
+        _gameManager.SetGhost(false);
+    }
+
+    IEnumerator ActivateRainbow(float secs) {
+        _gameManager.SetRainbow(true);
+        yield return new WaitForSeconds(secs);
+        _gameManager.SetRainbow(false);
     }
 
     IEnumerator DisplayPowerUI() {

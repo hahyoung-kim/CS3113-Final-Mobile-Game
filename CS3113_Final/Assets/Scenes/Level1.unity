@@ -138,7 +138,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &20722301
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9785,7 +9785,7 @@ PrefabInstance:
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: powerUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 20722300}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: hurtSound
       value: 
@@ -9793,11 +9793,11 @@ PrefabInstance:
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: powerIcon
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1193870184}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: powerText
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1956811899}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: pickupSound
       value: 
