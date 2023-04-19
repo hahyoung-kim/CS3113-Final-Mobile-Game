@@ -1,25 +1,28 @@
-// using System.Collections;
-// using System.Collections.Generic;
-// using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-// public class Magnet : MonoBehaviour
-// {
-//     public GameObject coinDetectorObj;
+public class Magnet : MonoBehaviour
+{
+    public GameObject coinDetectorObj;
 
-//     void Start(){
-//         coinDetectorObj = GameObject.FindGameObjectWithTag("Coin Detector");
-//         coinDetectorObj.SetActive(false);
-//     }
+    void Start(){
+        coinDetectorObj.SetActive(false);
+        print("did");
+    }
 
-//     private void OnTriggerEnter(Collider other){
-//         if (other.gameObject.tag == "Player"){
-//             StartCoroutine(ActivateCoin());
-//         }
-//     }
+    void OnTriggerEnter(Collider other){
+      print("hit");
+    }
 
-//     IEnumerator ActivateCoin(){
-//         coinDetectorObj.SetActive(true);
-//         yield return new WaitForSeconds(5f);
-//         coinDetectorObj.SetActive(false);
-//     }
-// }
+    void OnCollisionEnter2D(Collision2D other){
+          StartCoroutine(ActivateCoin());
+          print("started");
+    }
+
+    IEnumerator ActivateCoin(){
+        coinDetectorObj.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        coinDetectorObj.SetActive(false);
+    }
+}
