@@ -116,12 +116,58 @@ public class Player : MonoBehaviour
     IEnumerator ActivateGhost(float secs) {
         _gameManager.SetGhost(true);
         yield return new WaitForSeconds(secs);
+
+        // using a for loop doesnt work so i had to hard code this lol...
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+
         _gameManager.SetGhost(false);
     }
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
+
+        // using a for loop doesnt work so i had to hard code this lol...
         yield return new WaitForSeconds(secs);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.gray;
+        yield return new WaitForSeconds(.2f);
+        _renderer.color = Color.white;
+        yield return new WaitForSeconds(.2f);
+
         _gameManager.SetRainbow(false);
     }
 
