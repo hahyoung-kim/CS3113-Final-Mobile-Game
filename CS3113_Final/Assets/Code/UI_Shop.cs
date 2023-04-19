@@ -15,13 +15,13 @@ public class UI_Shop : MonoBehaviour
      public Button shieldB;
      public Button coinMulB; 
 
-     public static int magnet = 0;
+    //  public static int magnet = 0;
+    //  public static int boost = 0;
+    //  public static int shield = 0;
+    //  public static int coinMul = 0;
      public static int magnetLvl = 0;
-     public static int boost = 0;
      public static int boostLvl = 0;
-     public static int shield = 0;
      public static int shieldLvl = 0;
-     public static int coinMul = 0;
      public static int coinMulLvl = 0;
      public static int carrots = 0;
 
@@ -36,13 +36,13 @@ public class UI_Shop : MonoBehaviour
 
     public void FixedUpdate()
     {
-        magnet = PlayerPrefs.GetInt("magnet", magnet);
+        // magnet = PlayerPrefs.GetInt("magnet", magnet);
+        // boost = PlayerPrefs.GetInt("boost", boost);
+        // shield = PlayerPrefs.GetInt("shield", shield);
+        // coinMul = PlayerPrefs.GetInt("coinMul", coinMul);
         magnetLvl = PlayerPrefs.GetInt("magnetLvl", magnetLvl);
-        boost = PlayerPrefs.GetInt("boost", boost);
         boostLvl = PlayerPrefs.GetInt("boostLvl", boostLvl);
-        shield = PlayerPrefs.GetInt("shield", shield);
         shieldLvl = PlayerPrefs.GetInt("shieldLvl", shieldLvl);
-        coinMul = PlayerPrefs.GetInt("coinMul", coinMul);
         coinMulLvl = PlayerPrefs.GetInt("coinMulLvl", coinMulLvl);
         carrots = PlayerPrefs.GetInt("carrots", carrots);
 
@@ -83,7 +83,6 @@ public class UI_Shop : MonoBehaviour
         if (canBuy && magnetLvl < maxLvl){
             magnetB.interactable = true;
             if (magnetLvl == 0){
-            PlayerPrefs.SetInt("magnet", 1);
             PlayerPrefs.SetInt("magnetLvl", 1);
             }
             else {
@@ -98,7 +97,6 @@ public class UI_Shop : MonoBehaviour
 
     public void boostButton(){
         if (boostLvl == 0){
-            PlayerPrefs.SetInt("boost", 1);
             PlayerPrefs.SetInt("boostLvl", 1);
         }
         else if (boostLvl <= maxLvl){
@@ -111,7 +109,6 @@ public class UI_Shop : MonoBehaviour
 
     public void shieldButton(){
         if (shieldLvl == 0){
-            PlayerPrefs.SetInt("shield", 1);
             PlayerPrefs.SetInt("shieldLvl", 1);
         }
         else if (shieldLvl <= maxLvl){
@@ -124,7 +121,6 @@ public class UI_Shop : MonoBehaviour
 
     public void coinMulButton(){
         if (coinMulLvl == 0){
-            PlayerPrefs.SetInt("coinMul", 1);
             PlayerPrefs.SetInt("coinMulLvl", coinMulLvl);
         }
         else if (coinMulLvl <= maxLvl){
