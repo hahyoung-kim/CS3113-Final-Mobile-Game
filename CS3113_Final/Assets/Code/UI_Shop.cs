@@ -14,6 +14,10 @@ public class UI_Shop : MonoBehaviour
      public Button boostB;
      public Button shieldB;
      public Button coinMulB; 
+     public TextMeshProUGUI magnetUI;
+     public TextMeshProUGUI boostUI;
+     public TextMeshProUGUI shieldUI;
+     public TextMeshProUGUI coinMulUI; 
 
     //  public static int magnet = 0;
     //  public static int boost = 0;
@@ -30,9 +34,9 @@ public class UI_Shop : MonoBehaviour
      private int[] shieldCost = {30, 70, 120, 180, 250};
      private int[] coinMulCost = {75, 125, 200, 300, 425};
 
-    // void Start(){
-    //     PlayerPrefs.DeleteAll();
-    // }
+    void Start(){
+        PlayerPrefs.DeleteAll();
+    }
 
     public void FixedUpdate()
     {
@@ -47,6 +51,30 @@ public class UI_Shop : MonoBehaviour
         carrots = PlayerPrefs.GetInt("carrots", carrots);
 
         coinsUI.text = "" + carrots;
+        if (magnetLvl < 5){
+            magnetUI.text = "" + magnetCost[magnetLvl];
+        }
+        else{
+            magnetUI.text = "max";
+        }
+        if (boostLvl < 5){
+            boostUI.text = "" + boostCost[boostLvl];
+        }
+        else{
+            boostUI.text = "max";
+        }
+        if (shieldLvl < 5){
+            shieldUI.text = "" + shieldCost[shieldLvl];
+        }
+        else{
+            shieldUI.text = "max";
+        }
+        if (coinMulLvl < 5){
+            coinMulUI.text = "" + coinMulCost[coinMulLvl];
+        }
+        else{
+            coinMulUI.text = "max";
+        }
 
         bool canBuy = (magnetCost[magnetLvl] <= carrots);
         if (magnetLvl == 5 || !canBuy){
