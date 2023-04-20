@@ -85,13 +85,13 @@ public class Spawn : MonoBehaviour
     void SpawnObj() {
         int spawnType = UnityEngine.Random.Range(0, 20);
 
-        // 5% chance power ups if not currently used
+        // 5% chance power ups
         if (spawnType <= 0 && spawnPower) {
-            if (_gameManager.HasMagnet()) {
+            if (_gameManager.HasMagnet()) { // if using magnet dont spawn another magnet
                 spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd);
-            } else if (_gameManager.IsGhost() || _gameManager.IsRainbow()) {
+            } else if (_gameManager.IsGhost() || _gameManager.IsRainbow()) { // if ghost or rainbow only spawn magnet
                 spawnInd = powersMaxInd;
-            } else {
+            } else {    // else spawn any power up
                 spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
             }
             StartCoroutine(PowerCooldown());
