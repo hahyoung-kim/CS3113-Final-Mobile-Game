@@ -14,6 +14,7 @@ public class Spawn : MonoBehaviour
     public int carrotsMaxInd;
     public int powersMinInd;
     public int powersMaxInd;
+    public GameObject[] laserBunniesList;
 
     public float maxX;
     public float minX;
@@ -26,9 +27,10 @@ public class Spawn : MonoBehaviour
     private float startTime;
     private float elapsedTime;
     private int spawnInd;
-    private bool start = false;
+    private bool canSpawn = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -38,12 +40,13 @@ public class Spawn : MonoBehaviour
         ogMaxX = maxX;
         startTime = Time.time;
         _gameManager = GameObject.FindObjectOfType<GameManager>();
-        StartCoroutine(WaitSpawn());
+        StartCoroutine(WaitSpawn(3.5f));
     }
 
-    public IEnumerator WaitSpawn(){
-        yield return new WaitForSeconds(3.5f);
-        start = true;
+    public IEnumerator WaitSpawn(float secs){
+        canSpawn = false;
+        yield return new WaitForSeconds(secs);
+        canSpawn = true;
     }
 
     public IEnumerator PowerCooldown(){
@@ -55,7 +58,7 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_gameManager.GetLives() > 0 && start && !_gameManager.IsPaused()) {
+        if (_gameManager.GetLives() > 0 && canSpawn && !_gameManager.IsPaused()) {
             elapsedTime = Time.time - startTime;
             if (elapsedTime >= 1) {
                 timeBetweenSpawn = ogTBS - (float)(Math.Log(elapsedTime) * 0.3);

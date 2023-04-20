@@ -32,6 +32,8 @@ public class Player : MonoBehaviour
     RigidbodyConstraints2D ogConst;
  
     bool grounded = false;
+    
+    private int lasersTouching = 0;
 
 
     void Start()
@@ -108,6 +110,18 @@ public class Player : MonoBehaviour
             powerIcon.sprite = powerIcons[2];
             powerText.text = "Rainbow Bunny";
             StartCoroutine(DisplayPowerUI());
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Laser"){
+            lasersTouching += 1;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Laser"){
+            lasersTouching -= 1;
         }
     }
 
@@ -270,6 +284,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (_gameManager.LasersActive() && lasersTouching >= 1) {
+            _gameManager.loseLife(1);
+        }
         grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
         for (int i = 0; i < Input.touchCount; ++i){
 

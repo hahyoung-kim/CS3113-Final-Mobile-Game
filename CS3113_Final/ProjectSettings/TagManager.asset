@@ -12,6 +12,7 @@ TagManager:
   - Magnet
   - Coin Detector
   - Player Bubble
+  - Laser
   layers:
   - Default
   - TransparentFX
