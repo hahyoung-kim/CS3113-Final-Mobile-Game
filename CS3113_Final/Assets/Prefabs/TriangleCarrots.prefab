@@ -96,7 +96,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &3567508569651355302 stripped
 Transform:
@@ -158,7 +159,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (7)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &2912645615782135781 stripped
 Transform:
@@ -220,7 +222,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (3)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &3138786383100765661 stripped
 Transform:
@@ -282,7 +285,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &1248461901107925674 stripped
 Transform:
@@ -344,7 +348,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (5)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &1517783030828049596 stripped
 Transform:
@@ -406,7 +411,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (8)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &799590202636814459 stripped
 Transform:
@@ -468,7 +474,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (4)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &897594904647703871 stripped
 Transform:
@@ -530,7 +537,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (2)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &355299773796192263 stripped
 Transform:
@@ -592,7 +600,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &8157546018377331535 stripped
 Transform:
@@ -654,7 +663,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carrot (9)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2657229738212257147, guid: 5506e13550538234598a6688f9663e08, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5506e13550538234598a6688f9663e08, type: 3}
 --- !u!4 &6346908774532405374 stripped
 Transform:

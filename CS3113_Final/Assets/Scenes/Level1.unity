@@ -2720,8 +2720,8 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 0.2
+  m_PlayOnAwake: 0
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -10234,6 +10234,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1532490011}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: magSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a0c829e8b8ec55b47940bb46ae7c8bfc, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: hurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 790e6066e400fc040a6c6b29a8145317, type: 3}
@@ -10246,13 +10250,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1956811899}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: ghostSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 57f129a15996acf4b9129f64ee7bf7ea, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: obsRemover
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: pickupSound
       value: 
-      objectReference: {fileID: 8300000, guid: 3a702ea4f67805f4f8e4baa2ec699eed, type: 3}
+      objectReference: {fileID: 8300000, guid: 881c1772553948644b0a922c0c352ae8, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: rainbowSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 0155e481a8636714f9d357608e4d3763, type: 3}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: coinDetectorObj
       value: 

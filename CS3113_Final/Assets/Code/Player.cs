@@ -20,6 +20,9 @@ public class Player : MonoBehaviour
     AudioSource _audioSource;
     public AudioClip hurtSound;
     public AudioClip pickupSound;
+    public AudioClip magSound;
+    public AudioClip ghostSound;
+    public AudioClip rainbowSound;
     public LayerMask whatIsGround;
     public Transform feet;
     public Transform camera;
@@ -87,7 +90,7 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
-            //_audioSource.PlayOneShot();
+            _audioSource.PlayOneShot(magSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
             StartCoroutine(ActivateMagnet(10));
             Destroy(other.gameObject);
@@ -95,7 +98,7 @@ public class Player : MonoBehaviour
             powerText.text = "Magnet Bunny";
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Ghost")){
-            //_audioSource.PlayOneShot();
+            _audioSource.PlayOneShot(ghostSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
             StartCoroutine(ActivateGhost(10));
             Destroy(other.gameObject);
@@ -103,7 +106,7 @@ public class Player : MonoBehaviour
             powerText.text = "Ghost Bunny";
             StartCoroutine(DisplayPowerUI());
         } else if (other.CompareTag("Star")){
-            //_audioSource.PlayOneShot();
+            _audioSource.PlayOneShot(rainbowSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
             StartCoroutine(ActivateRainbow(10));
             Destroy(other.gameObject);
