@@ -63,7 +63,7 @@ public class UI_Shop : MonoBehaviour
             magnetUI.text = "max";
             canBuyMag = false;
         }
-        if (boostLvl < 5){
+        if (boostLvl < maxLvl){
             boostUI.text = "" + boostCost[boostLvl];
             canBuyBoost = (boostCost[boostLvl] <= carrots);
         }
@@ -71,7 +71,7 @@ public class UI_Shop : MonoBehaviour
             boostUI.text = "max";
             canBuyBoost = false;
         }
-        if (shieldLvl < 5){
+        if (shieldLvl < maxLvl){
             shieldUI.text = "" + shieldCost[shieldLvl];
             canBuyShield = (shieldCost[shieldLvl] <= carrots);
         }
@@ -79,7 +79,7 @@ public class UI_Shop : MonoBehaviour
             shieldUI.text = "max";
             canBuyShield = false;
         }
-        if (coinMulLvl < 5){
+        if (coinMulLvl < maxLvl){
             coinMulUI.text = "" + coinMulCost[coinMulLvl];
             canBuyCoinMul = (coinMulCost[coinMulLvl] <= carrots);
         }
@@ -88,28 +88,28 @@ public class UI_Shop : MonoBehaviour
             canBuyCoinMul = false;
         }
 
-        if (magnetLvl == 5 || canBuyMag == false){
+        if (magnetLvl == maxLvl || canBuyMag == false){
             magnetB.interactable = false;
         }
         else{
             magnetB.interactable = true;
         }
 
-        if (boostLvl == 5 || canBuyBoost == false){
+        if (boostLvl == maxLvl || canBuyBoost == false){
             boostB.interactable = false;
         }
         else{
             boostB.interactable = true;
         }
         
-        if (shieldLvl == 5 || canBuyShield == false){
+        if (shieldLvl == maxLvl || canBuyShield == false){
             shieldB.interactable = false;
         }
         else{
             shieldB.interactable = true;
         }
         
-        if (coinMulLvl == 5 || canBuyCoinMul == false){
+        if (coinMulLvl == maxLvl || canBuyCoinMul == false){
             coinMulB.interactable = false;
         }
         else{
@@ -118,43 +118,43 @@ public class UI_Shop : MonoBehaviour
     }
 
     public void magnetButton(){
-        if (canBuyMag && magnetLvl != 5){
+        if (canBuyMag && magnetLvl != maxLvl){
             carrots -= magnetCost[magnetLvl];
             PlayerPrefs.SetInt("magnetLvl", magnetLvl+1);
         }
-        if (magnetLvl == 5 || canBuyMag == false){
+        if (magnetLvl == maxLvl || canBuyMag == false){
             magnetB.interactable = false;
         }
         print(PlayerPrefs.GetInt("magnetLvl", 0));
     }
 
     public void boostButton(){
-        if (canBuyBoost && boostLvl != 5){
+        if (canBuyBoost && boostLvl != maxLvl){
             carrots -= boostCost[boostLvl];
             PlayerPrefs.SetInt("boostLvl", boostLvl+1);
         }
-        if (boostLvl == 5 || canBuyBoost == false){
+        if (boostLvl == maxLvl || canBuyBoost == false){
             boostB.interactable = false;
         }
         print(PlayerPrefs.GetInt("boostLvl", 0));
     }
 
     public void shieldButton(){
-        if (canBuyShield && shieldLvl != 5){
+        if (canBuyShield && shieldLvl != maxLvl){
             carrots -= shieldCost[shieldLvl];
             PlayerPrefs.SetInt("shieldLvl", shieldLvl+1);
         }
-        if (shieldLvl == 5 || canBuyShield == false){
+        if (shieldLvl == maxLvl || canBuyShield == false){
             shieldB.interactable = false;
         }
     }
 
     public void coinMulButton(){
-        if (canBuyCoinMul && coinMulLvl != 5){
+        if (canBuyCoinMul && coinMulLvl != maxLvl){
             carrots -= coinMulCost[coinMulLvl];
             PlayerPrefs.SetInt("coinMulLvl", coinMulLvl+1);
         }
-        if (shieldLvl == 5 || canBuyCoinMul == false){
+        if (shieldLvl == maxLvl || canBuyCoinMul == false){
             coinMulB.interactable = false;
         }
     }
