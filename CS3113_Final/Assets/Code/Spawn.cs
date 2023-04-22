@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Spawn : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Spawn : MonoBehaviour
     public int carrotsMaxInd;
     public int powersMinInd;
     public int powersMaxInd;
-    public GameObject[] laserBunniesList;
+    public GameObject laserBunnies;
 
     public float maxX;
     public float minX;
@@ -26,7 +27,6 @@ public class Spawn : MonoBehaviour
     public GameObject player;
     private float startTime;
     private float elapsedTime;
-    private int spawnInd;
     private bool canSpawn = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
@@ -83,8 +83,31 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnObj() {
+        if (player.transform.position.x >= 300 && player.transform.position.x % 300 <= 100 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            SpawnLasers();
+        } else {
+            SpawnObsCrts();
+        }
+        
+    }
+
+    void SpawnLasers() {
+        StartCoroutine(WaitSpawn(7));
+        float[] yCoords = { -3.8f, -2.55f, -1.3f, -0.05f, 1.2f, 2.45f, 3.7f };
+        // shuffle y coords to randomly select where bunnies will spawn
+        System.Random random = new System.Random();
+        yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
+        int numLasers = UnityEngine.Random.Range(0, yCoords.Length-1);
+        for (int i = 0; i < numLasers; i++) {
+            GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3.16f, yCoords[i], -.5f), transform.rotation);
+        }
+        StartCoroutine(WaitSpawn(10));
+    }
+
+    void SpawnObsCrts() {
         int spawnType = UnityEngine.Random.Range(0, 20);
 
+        int spawnInd;
         // 5% chance power ups
         if (spawnType <= 0 && spawnPower) {
             if (_gameManager.HasMagnet()) { // if using magnet dont spawn another magnet
@@ -125,7 +148,7 @@ public class Spawn : MonoBehaviour
         }
 
         print(randomX);
-        GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, 0), transform.rotation);
+        GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, -0.5f), transform.rotation);
         spawned.Add(spawnedPrefab);
     }
 

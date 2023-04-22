@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
+        //print(lasersTouching);
         if (_gameManager.IsPaused()) {
             _rigidbody.constraints = RigidbodyConstraints2D.FreezePosition;
         } else {
@@ -118,12 +119,14 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.tag == "Laser"){
+            print("lasers collide " + lasersTouching);
             lasersTouching += 1;
         }
     }
 
     private void OnCollisionExit2D(Collision2D other) {
         if (other.gameObject.tag == "Laser"){
+            print("lasers exit " + lasersTouching);
             lasersTouching -= 1;
         }
     }

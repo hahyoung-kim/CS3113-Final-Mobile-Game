@@ -132,10 +132,10 @@ TextureImporter:
       name: waves_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 571
-        width: 1241
-        height: 59
+        x: 14
+        y: 448
+        width: 1247
+        height: 50
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -143,8 +143,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9e07751d8dda8e4bb38277402edbdec
-      internalID: -499926808
+      spriteID: 5f7978420f76b60408aff4e817e9ba79
+      internalID: -1027758504
       vertices: []
       indices: 
       edges: []
@@ -153,10 +153,10 @@ TextureImporter:
       name: waves_1
       rect:
         serializedVersion: 2
-        x: 0
-        y: 490
-        width: 1241
-        height: 57
+        x: 14
+        y: 370
+        width: 1248
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -164,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ca8b0ee3ccd3e1a4bad33e78b6679cf1
-      internalID: -1019169612
+      spriteID: dfe2e1fedc87acb40b3bcda32e2c1c16
+      internalID: 318534214
       vertices: []
       indices: 
       edges: []
@@ -174,10 +174,10 @@ TextureImporter:
       name: waves_2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 409
-        width: 1241
-        height: 60
+        x: 19
+        y: 287
+        width: 1244
+        height: 56
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -185,8 +185,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 33437454a8396e142a475d34bf9e2e87
-      internalID: 1334945636
+      spriteID: 514aa43d09ee6f54cb6c56032c8f81b8
+      internalID: 1506616383
       vertices: []
       indices: 
       edges: []
@@ -202,9 +202,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      waves_2: 1334945636
-      waves_1: -1019169612
-      waves_0: -499926808
+      waves_2: 1506616383
+      waves_1: 318534214
+      waves_0: -1027758504
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
