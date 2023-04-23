@@ -115,7 +115,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8753625221776439943}
   - component: {fileID: 8753625221776439940}
-  - component: {fileID: 8753625221776439941}
+  - component: {fileID: 3822224860517461832}
+  - component: {fileID: 6586508001133368554}
   m_Layer: 0
   m_Name: laser
   m_TagString: Laser
@@ -131,8 +132,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8753625221776439942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06000042, y: -0.050000012, z: -0.5}
-  m_LocalScale: {x: 3, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.050000012, z: -1}
+  m_LocalScale: {x: 3.34, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8753625221996799280}
@@ -190,7 +191,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8753625221776439941
+--- !u!50 &3822224860517461832
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8753625221776439942}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &6586508001133368554
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -203,18 +225,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.003878519}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 6.7625, y: 0.95758057}
+    oldSize: {x: 6.0111113, y: 0.85118276}
     newSize: {x: 27.320002, y: 0.48023438}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 6.8300004, y: 0.120058596}
+  m_Size: {x: 6.0111113, y: 0.5595491}
   m_EdgeRadius: 0
 --- !u!1 &8753625221915762092
 GameObject:

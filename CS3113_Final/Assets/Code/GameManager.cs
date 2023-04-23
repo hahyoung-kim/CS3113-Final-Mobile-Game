@@ -24,8 +24,6 @@ public class GameManager : MonoBehaviour
     private bool removeObstacles = false;
     private bool isPaused = false;
 
-    private bool lasersActivated = false;
-
     private void Awake()
     {
         if(GameObject.FindObjectsOfType<GameManager>().Length > 1)
@@ -137,14 +135,6 @@ public class GameManager : MonoBehaviour
 
     public bool IsPaused() {
         return isPaused;
-    }
-
-    public void SetLasers(bool b) {
-        lasersActivated = b;
-    }
-
-    public bool LasersActive() {
-        return lasersActivated;
     }
 
     public void Update()

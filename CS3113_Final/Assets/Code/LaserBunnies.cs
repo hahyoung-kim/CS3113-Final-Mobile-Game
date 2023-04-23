@@ -26,8 +26,7 @@ public class LaserBunnies : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         waves.SetActive(false);
         laser.SetActive(true);
-        print("laser active");
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
 

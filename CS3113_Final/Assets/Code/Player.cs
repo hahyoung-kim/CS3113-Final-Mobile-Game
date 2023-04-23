@@ -36,8 +36,6 @@ public class Player : MonoBehaviour
  
     bool grounded = false;
     
-    private int lasersTouching = 0;
-
 
     void Start()
     {
@@ -93,7 +91,7 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateMagnet(10));
+            StartCoroutine(ActivateMagnet(7));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[0];
             powerText.text = "Magnet Bunny";
@@ -101,7 +99,7 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Ghost")){
             _audioSource.PlayOneShot(ghostSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateGhost(10));
+            StartCoroutine(ActivateGhost(7));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[1];
             powerText.text = "Ghost Bunny";
@@ -109,25 +107,13 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Star")){
             _audioSource.PlayOneShot(rainbowSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateRainbow(10));
+            StartCoroutine(ActivateRainbow(5));
             Destroy(other.gameObject);
             powerIcon.sprite = powerIcons[2];
             powerText.text = "Rainbow Bunny";
             StartCoroutine(DisplayPowerUI());
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Laser"){
-            print("lasers collide " + lasersTouching);
-            lasersTouching += 1;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D other) {
-        if (other.gameObject.tag == "Laser"){
-            print("lasers exit " + lasersTouching);
-            lasersTouching -= 1;
+        } else if (other.CompareTag("Laser")){
+            _gameManager.loseLife(1);
         }
     }
 
@@ -290,9 +276,7 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (_gameManager.LasersActive() && lasersTouching >= 1) {
-            _gameManager.loseLife(1);
-        }
+        
         grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
         for (int i = 0; i < Input.touchCount; ++i){
 

@@ -30,6 +30,7 @@ public class Spawn : MonoBehaviour
     private bool canSpawn = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
+    private bool prevLaser = false;
     
 
     // Start is called before the first frame update
@@ -83,17 +84,26 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnObj() {
-        if (player.transform.position.x >= 300 && player.transform.position.x % 300 <= 100 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-            SpawnLasers();
+        //if (player.transform.position.x >= 300 && player.transform.position.x % 300 <= 100 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+        //if (player.transform.position.x % UnityEngine.Random.Range(300, 500) <= UnityEngine.Random.Range(100, 200) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+        if (player.transform.position.x >= 400 && player.transform.position.x % 400 <= 150 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            for (int i = 0; i < UnityEngine.Random.Range(0, 5); i++) {
+                SpawnLasers();
+            }
         } else {
             SpawnObsCrts();
         }
-        
     }
 
     void SpawnLasers() {
-        StartCoroutine(WaitSpawn(7));
-        float[] yCoords = { -3.8f, -2.55f, -1.3f, -0.05f, 1.2f, 2.45f, 3.7f };
+        if (prevLaser) {
+            StartCoroutine(WaitSpawn(5));
+        } else {
+            print("prev not laser");
+            StartCoroutine(WaitSpawn(30));
+        }
+        
+        float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
@@ -101,10 +111,12 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < numLasers; i++) {
             GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3.16f, yCoords[i], -.5f), transform.rotation);
         }
-        StartCoroutine(WaitSpawn(10));
+        //StartCoroutine(WaitSpawn(10));
+        prevLaser = true;
     }
 
     void SpawnObsCrts() {
+        prevLaser = false;
         int spawnType = UnityEngine.Random.Range(0, 20);
 
         int spawnInd;
@@ -150,6 +162,7 @@ public class Spawn : MonoBehaviour
         print(randomX);
         GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, -0.5f), transform.rotation);
         spawned.Add(spawnedPrefab);
+        prevLaser = false;
     }
 
     public void DeleteObstacles() {
