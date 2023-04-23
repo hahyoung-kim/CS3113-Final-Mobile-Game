@@ -88,7 +88,8 @@ public class Spawn : MonoBehaviour
 
     IEnumerator SpawnObj() {
         spawning = true;
-        if (player.transform.position.x >= 400 && (player.transform.position.x % 400 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+        if (player.transform.position.x >= 500 && (player.transform.position.x % 500 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            _gameManager.SetLasers(true);
             if (!prevLaser) {
                 yield return new WaitForSeconds(3);
             }
@@ -100,6 +101,7 @@ public class Spawn : MonoBehaviour
             iterations -= 1;
             print("it " + iterations);
         } else if (spawnNonLasers) {
+            _gameManager.SetLasers(false);
             SpawnObsCrts();
         }
         spawning = false;

@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
     private bool isRb = false;
     private bool removeObstacles = false;
     private bool isPaused = false;
+    private bool lasersActive = false;
 
     private void Awake()
     {
@@ -135,6 +136,14 @@ public class GameManager : MonoBehaviour
 
     public bool IsPaused() {
         return isPaused;
+    }
+
+    public bool LasersActivated() {
+        return lasersActive;
+    }
+
+    public void SetLasers(bool b) {
+        lasersActive = b;
     }
 
     public void Update()

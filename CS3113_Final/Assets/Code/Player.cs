@@ -283,7 +283,7 @@ public class Player : MonoBehaviour
             Touch touch = Input.GetTouch(i);
             //if (touch.phase == TouchPhase.Began){
             if (touch.phase == TouchPhase.Stationary && canFly && !_gameManager.IsPaused()){
-                _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
+                _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
             }
         }
     }
