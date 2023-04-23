@@ -59,7 +59,7 @@ public class Player : MonoBehaviour
             _rigidbody.constraints = ogConst;
         }
         if (Input.GetMouseButton(0) && canFly){
-            _rigidbody.AddForce(new Vector3(0, 50, 0), ForceMode2D.Force);
+            _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
         } 
         else if (Input.GetMouseButtonUp(0)){
             //_rigidbody.velocity *= 0.5f;
@@ -264,7 +264,7 @@ public class Player : MonoBehaviour
     }
 
     public IEnumerator WaitFly(){
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(3f);
         canFly = true;
     }
 

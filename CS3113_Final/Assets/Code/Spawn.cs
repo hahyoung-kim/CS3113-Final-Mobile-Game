@@ -31,7 +31,9 @@ public class Spawn : MonoBehaviour
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
     private bool prevLaser = false;
-    
+    private bool spawning = false;
+    private int iterations = 0;
+    private bool spawnNonLasers = true;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +43,8 @@ public class Spawn : MonoBehaviour
         ogMaxX = maxX;
         startTime = Time.time;
         _gameManager = GameObject.FindObjectOfType<GameManager>();
-        StartCoroutine(WaitSpawn(3.5f));
+        StartCoroutine(WaitSpawn(4));
+        StartCoroutine(PowerCooldown(15));
     }
 
     public IEnumerator WaitSpawn(float secs){
@@ -50,9 +53,9 @@ public class Spawn : MonoBehaviour
         canSpawn = true;
     }
 
-    public IEnumerator PowerCooldown(){
+    public IEnumerator PowerCooldown(float secs){
         spawnPower = false;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(secs);
         spawnPower = true;
     }
 
@@ -76,33 +79,45 @@ public class Spawn : MonoBehaviour
             if (timeBetweenSpawn < 0.75f) {
                 timeBetweenSpawn = 0.75f;
             } 
-            if (elapsedTime > spawnTime) {
-                SpawnObj();
+            if (elapsedTime > spawnTime && !spawning) {
+                StartCoroutine(SpawnObj());
                 spawnTime = elapsedTime + timeBetweenSpawn;
             }
         }
     }
 
-    void SpawnObj() {
-        //if (player.transform.position.x >= 300 && player.transform.position.x % 300 <= 100 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-        //if (player.transform.position.x % UnityEngine.Random.Range(300, 500) <= UnityEngine.Random.Range(100, 200) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-        if (player.transform.position.x >= 400 && player.transform.position.x % 400 <= 150 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-            for (int i = 0; i < UnityEngine.Random.Range(0, 5); i++) {
-                SpawnLasers();
+    IEnumerator SpawnObj() {
+        spawning = true;
+        if (player.transform.position.x >= 400 && (player.transform.position.x % 400 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            if (!prevLaser) {
+                yield return new WaitForSeconds(3);
             }
-        } else {
+            if (iterations <= 0) {
+                iterations = UnityEngine.Random.Range(0, 5);
+            }
+            print("it " + iterations);
+            SpawnLasers();
+            iterations -= 1;
+        } else if (spawnNonLasers) {
+            if (prevLaser) {
+                yield return new WaitForSeconds(3);
+            }
             SpawnObsCrts();
         }
+        spawning = false;
+    }
+
+    IEnumerator WaitNonLasers(float secs) {
+        spawnNonLasers = false;
+        yield return new WaitForSeconds(secs);
+        spawnNonLasers = true;
     }
 
     void SpawnLasers() {
-        if (prevLaser) {
-            StartCoroutine(WaitSpawn(5));
-        } else {
-            print("prev not laser");
-            StartCoroutine(WaitSpawn(30));
-        }
-        
+        StartCoroutine(WaitSpawn(5.5f));
+        StartCoroutine(WaitNonLasers(10));
+                
+        prevLaser = true;
         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
@@ -111,8 +126,6 @@ public class Spawn : MonoBehaviour
         for (int i = 0; i < numLasers; i++) {
             GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3.16f, yCoords[i], -.5f), transform.rotation);
         }
-        //StartCoroutine(WaitSpawn(10));
-        prevLaser = true;
     }
 
     void SpawnObsCrts() {
@@ -129,7 +142,7 @@ public class Spawn : MonoBehaviour
             } else {    // else spawn any power up
                 spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
             }
-            StartCoroutine(PowerCooldown());
+            StartCoroutine(PowerCooldown(5));
             
         } else if (spawnType <= 9) {  // 45% chance carrots                              
             spawnInd = UnityEngine.Random.Range(carrotsMinInd, carrotsMaxInd + 1);
@@ -162,7 +175,6 @@ public class Spawn : MonoBehaviour
         print(randomX);
         GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, -0.5f), transform.rotation);
         spawned.Add(spawnedPrefab);
-        prevLaser = false;
     }
 
     public void DeleteObstacles() {
