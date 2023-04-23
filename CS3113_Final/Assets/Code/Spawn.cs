@@ -93,15 +93,13 @@ public class Spawn : MonoBehaviour
                 yield return new WaitForSeconds(3);
             }
             if (iterations <= 0) {
-                iterations = UnityEngine.Random.Range(0, 5);
+                iterations = UnityEngine.Random.Range(1, 5);
             }
-            print("it " + iterations);
+            
             SpawnLasers();
             iterations -= 1;
+            print("it " + iterations);
         } else if (spawnNonLasers) {
-            if (prevLaser) {
-                yield return new WaitForSeconds(3);
-            }
             SpawnObsCrts();
         }
         spawning = false;
@@ -124,7 +122,7 @@ public class Spawn : MonoBehaviour
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
         int numLasers = UnityEngine.Random.Range(0, yCoords.Length-1);
         for (int i = 0; i < numLasers; i++) {
-            GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3.16f, yCoords[i], -.5f), transform.rotation);
+            GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3f, yCoords[i], -.5f), transform.rotation);
         }
     }
 
