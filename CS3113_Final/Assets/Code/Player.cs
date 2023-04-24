@@ -231,6 +231,7 @@ public class Player : MonoBehaviour
         powerText.gameObject.SetActive(true);
         yield return new WaitForSeconds(1.5f);
         
+        StartCoroutine(spawner.GetComponent<Spawn>().WaitSpawn(1));
         powerUI.SetActive(false); 
         powerIcon.gameObject.SetActive(false);
         powerBgnd.gameObject.SetActive(false);

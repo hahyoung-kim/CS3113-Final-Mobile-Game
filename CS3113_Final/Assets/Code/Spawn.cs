@@ -71,11 +71,11 @@ public class Spawn : MonoBehaviour
                 maxX = ogMaxX - (float)(Math.Log(player.transform.position.x));
             }
             
-            if (minX < 12) {
-                minX = 12;
+            if (minX < 13) {
+                minX = 13;
             }
-            if (maxX < 12) {
-                maxX = 12;
+            if (maxX < 15) {
+                maxX = 15;
             }
             if (timeBetweenSpawn < 0.75f) {
                 timeBetweenSpawn = 0.75f;
@@ -89,7 +89,7 @@ public class Spawn : MonoBehaviour
 
     IEnumerator SpawnObj() {
         spawning = true;
-        if (player.transform.position.x >= 400 && (player.transform.position.x % 400 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+        if (player.transform.position.x >= 500 && (player.transform.position.x % 500 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
             _gameManager.SetLasers(true);
             if (prev != "l") {
                 yield return new WaitForSeconds(3);
@@ -121,7 +121,7 @@ public class Spawn : MonoBehaviour
 
     void SpawnLasers() {
         StartCoroutine(WaitSpawn(5f));
-        StartCoroutine(WaitNonLasers(15));
+        StartCoroutine(WaitNonLasers(14));
         prev = "l";
         print("lasers");
         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
@@ -155,7 +155,7 @@ public class Spawn : MonoBehaviour
         //     GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[i], -1f), transform.rotation);
         // }
         GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[0], -1f), transform.rotation);
-        StartCoroutine(WaitNonLasers(1));
+        //StartCoroutine(WaitNonLasers(1));
     }
 
     void SpawnObsCrts() {
@@ -202,7 +202,6 @@ public class Spawn : MonoBehaviour
             randomY = UnityEngine.Random.Range(minY, maxY);
         }
 
-        //print(randomX);
         GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, -0.5f), transform.rotation);
         spawned.Add(spawnedPrefab);
     }
