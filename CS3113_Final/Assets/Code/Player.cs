@@ -123,8 +123,8 @@ public class Player : MonoBehaviour
         }
         
         yield return new WaitForSeconds(secs);
-        yield return new WaitForSeconds(2f);
         StartCoroutine(Flicker());
+        yield return new WaitForSeconds(2f);
 
         _gameManager.SetMagnet(false);
 
