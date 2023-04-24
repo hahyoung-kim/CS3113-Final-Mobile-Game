@@ -23,6 +23,7 @@ public class Player : MonoBehaviour
     public AudioClip magSound;
     public AudioClip ghostSound;
     public AudioClip rainbowSound;
+    public AudioClip boopSound;
     public LayerMask whatIsGround;
     public Transform feet;
     public Transform camera;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     public TextMeshProUGUI powerText;
     public Image powerIcon;
     public Sprite[] powerIcons;
+    public Image powerBgnd;
     public GameObject spawner;
     RigidbodyConstraints2D ogConst;
  
@@ -91,27 +93,21 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateMagnet(7));
             Destroy(other.gameObject);
-            powerIcon.sprite = powerIcons[0];
-            powerText.text = "Magnet Bunny";
-            StartCoroutine(DisplayPowerUI());
+            StartCoroutine(DisplayPowerUI(powerIcons[0], "Magnet Bunny"));
+            StartCoroutine(ActivateMagnet(10));
         } else if (other.CompareTag("Ghost")){
             _audioSource.PlayOneShot(ghostSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateGhost(7));
             Destroy(other.gameObject);
-            powerIcon.sprite = powerIcons[1];
-            powerText.text = "Ghost Bunny";
-            StartCoroutine(DisplayPowerUI());
+            StartCoroutine(DisplayPowerUI(powerIcons[1], "Ghost Bunny"));
+            StartCoroutine(ActivateGhost(10));
         } else if (other.CompareTag("Star")){
             _audioSource.PlayOneShot(rainbowSound);
             spawner.GetComponent<Spawn>().DeleteObstacles();
-            StartCoroutine(ActivateRainbow(5));
             Destroy(other.gameObject);
-            powerIcon.sprite = powerIcons[2];
-            powerText.text = "Rainbow Bunny";
-            StartCoroutine(DisplayPowerUI());
+            StartCoroutine(DisplayPowerUI(powerIcons[2], "Rainbow Bunny"));
+            StartCoroutine(ActivateRainbow(7));
         } else if (other.CompareTag("Laser")){
             _gameManager.loseLife(1);
         }
@@ -130,28 +126,8 @@ public class Player : MonoBehaviour
         }
         
         yield return new WaitForSeconds(secs);
-
-        // using a for loop doesnt work so i had to hard code this lol...
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(Flicker());
 
         _gameManager.SetMagnet(false);
 
@@ -178,28 +154,8 @@ public class Player : MonoBehaviour
     
         yield return new WaitForSeconds(secs);
 
-        // using a for loop doesnt work so i had to hard code this lol...
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.gray;
-        yield return new WaitForSeconds(.2f);
-        _renderer.color = Color.white;
-        yield return new WaitForSeconds(.2f);
-
+        StartCoroutine(Flicker());
+        yield return new WaitForSeconds(2f);
         _gameManager.SetGhost(false);
 
         if (_gameManager.HasMagnet()) {
@@ -213,6 +169,7 @@ public class Player : MonoBehaviour
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
+        yield return new WaitForSeconds(1.5f);
         if (_gameManager.HasMagnet()) {
             // magnet + rainbow sprite
 
@@ -222,6 +179,20 @@ public class Player : MonoBehaviour
         
         yield return new WaitForSeconds(secs);
 
+        StartCoroutine(Flicker());
+        yield return new WaitForSeconds(2f);
+        _gameManager.SetRainbow(false);
+
+        if (_gameManager.HasMagnet()) {
+            // magnet sprite
+            _renderer.sprite = spriteArray[1]; 
+        } else {
+            // default sprite
+           _renderer.sprite = spriteArray[0]; 
+        }
+    }
+
+    IEnumerator Flicker() {
         // using a for loop doesnt work so i had to hard code this lol...
         _renderer.color = Color.gray;
         yield return new WaitForSeconds(.2f);
@@ -243,23 +214,25 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         _renderer.color = Color.white;
         yield return new WaitForSeconds(.2f);
-
-        _gameManager.SetRainbow(false);
-
-        if (_gameManager.HasMagnet()) {
-            // magnet sprite
-            _renderer.sprite = spriteArray[1]; 
-        } else {
-            // default sprite
-           _renderer.sprite = spriteArray[0]; 
-        }
     }
 
-    IEnumerator DisplayPowerUI() {
+    IEnumerator DisplayPowerUI(Sprite icon, string power) {
         powerUI.SetActive(true); 
         _gameManager.SetPause(true);
-        yield return new WaitForSeconds(1.5f);
+        powerIcon.sprite = icon;
+        powerIcon.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        _audioSource.PlayOneShot(boopSound);
+        powerBgnd.gameObject.SetActive(true);
+        yield return new WaitForSeconds(.2f);
+        _audioSource.PlayOneShot(boopSound);
+        powerText.text = power;
+        powerText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1f);
         powerUI.SetActive(false); 
+        powerIcon.gameObject.SetActive(false);
+        powerBgnd.gameObject.SetActive(false);
+        powerText.gameObject.SetActive(false);
         _gameManager.SetPause(false);
     }
 

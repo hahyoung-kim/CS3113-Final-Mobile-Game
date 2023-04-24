@@ -27,23 +27,7 @@ public class MissileBunny : MonoBehaviour
 
     IEnumerator Activate() {
         _audioSource.PlayOneShot(warningSound);
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.white;
-        _audioSource.PlayOneShot(warningSound);
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.white;
-        _audioSource.PlayOneShot(warningSound);
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.red;
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.white;
-        _audioSource.PlayOneShot(warningSound);
-        yield return new WaitForSeconds(0.2f);
-        warning.GetComponent<SpriteRenderer>().color = Color.red;
+        StartCoroutine(Flicker());
 
         yield return new WaitForSeconds(2);      
         warning.SetActive(false);
@@ -53,6 +37,27 @@ public class MissileBunny : MonoBehaviour
 
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    IEnumerator Flicker() {
+        // using a for loop doesnt work so i had to hard code this lol...
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.white;
+        _audioSource.PlayOneShot(warningSound);
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.white;
+        _audioSource.PlayOneShot(warningSound);
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.white;
+        _audioSource.PlayOneShot(warningSound);
+        yield return new WaitForSeconds(0.2f);
+        warning.GetComponent<SpriteRenderer>().color = Color.red;
     }
 
 }

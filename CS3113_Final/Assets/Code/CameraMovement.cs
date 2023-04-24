@@ -16,15 +16,13 @@ public class CameraMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (GetComponent<GameManager>().GetLives() > 0 && !GetComponent<GameManager>().IsPaused() && !GetComponent<GameManager>().LasersActivated()) {
+        if (GetComponent<GameManager>().GetLives() > 0 && !GetComponent<GameManager>().IsPaused()) {
             if (GetComponent<GameManager>().IsRainbow()) {
-                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 3);
-                transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
-            } else {
+                cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 5);
+            } else if (!GetComponent<GameManager>().LasersActivated()) {
                 cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.6f);
-                transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
             }
-            
+            transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
         }
         
     }

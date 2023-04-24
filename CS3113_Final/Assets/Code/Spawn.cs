@@ -88,15 +88,15 @@ public class Spawn : MonoBehaviour
 
     IEnumerator SpawnObj() {
         spawning = true;
-        if (player.transform.position.x >= 500 && (player.transform.position.x % 500 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-            _gameManager.SetLasers(true);
+        if (player.transform.position.x >= 450 && (player.transform.position.x % 450 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            
             if (!prevLaser) {
                 yield return new WaitForSeconds(3);
             }
             if (iterations <= 0) {
                 iterations = UnityEngine.Random.Range(1, 5);
             }
-            
+            _gameManager.SetLasers(true);
             SpawnLasers();
             iterations -= 1;
             print("it " + iterations);

@@ -2129,7 +2129,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1193870183
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2356,7 +2356,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2914,7 +2914,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1476446930
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9349,7 +9349,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1956811898
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9793,6 +9793,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: missileBunny
       objectReference: {fileID: 0}
+    - target: {fileID: 6606613483128115916, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4282811798218508693, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
@@ -9856,9 +9860,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: 10fcbf716af42914fa8b864b3e03104a, type: 3}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: boopSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 155762c044cc65f469ad7d14ea62ccd1, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: hurtSound
       value: 
       objectReference: {fileID: 8300000, guid: 790e6066e400fc040a6c6b29a8145317, type: 3}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: powerBgnd
+      value: 
+      objectReference: {fileID: 1476446931}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: powerIcon
       value: 
