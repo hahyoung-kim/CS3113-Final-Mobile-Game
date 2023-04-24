@@ -118,6 +118,8 @@ public class Player : MonoBehaviour
     IEnumerator ActivateMagnet(float secs) {
         print("done");
         _gameManager.SetMagnet(true);
+        _animator.SetBool("magnet", true);
+
         if (_gameManager.IsGhost()) {
             // magnet + ghost sprite
 
@@ -139,6 +141,7 @@ public class Player : MonoBehaviour
         PublicVars.magnetCollider = false;
 
         _gameManager.SetMagnet(false);
+        _animator.SetBool("magnet", false);
 
         if (_gameManager.IsGhost()) {
             // ghost sprite
@@ -181,6 +184,8 @@ public class Player : MonoBehaviour
 
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
+        _animator.SetBool("rainbow", true);
+
         yield return new WaitForSeconds(1.5f);
         if (_gameManager.HasMagnet()) {
             // magnet + rainbow sprite
@@ -194,6 +199,7 @@ public class Player : MonoBehaviour
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
         _gameManager.SetRainbow(false);
+        _animator.SetBool("rainbow", false);
 
         if (_gameManager.HasMagnet()) {
             // magnet sprite
