@@ -88,15 +88,15 @@ public class Spawn : MonoBehaviour
 
     IEnumerator SpawnObj() {
         spawning = true;
-        if (player.transform.position.x >= 450 && (player.transform.position.x % 450 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
-            
+        if (player.transform.position.x >= 400 && (player.transform.position.x % 400 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+            _gameManager.SetLasers(true);
             if (!prevLaser) {
                 yield return new WaitForSeconds(3);
             }
             if (iterations <= 0) {
                 iterations = UnityEngine.Random.Range(1, 5);
             }
-            _gameManager.SetLasers(true);
+            
             SpawnLasers();
             iterations -= 1;
             print("it " + iterations);
@@ -114,17 +114,20 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnLasers() {
+        
         StartCoroutine(WaitSpawn(5.5f));
         StartCoroutine(WaitNonLasers(10));
-                
+        print("spawn lasers");
         prevLaser = true;
         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
         int numLasers = UnityEngine.Random.Range(0, yCoords.Length-1);
+        print(numLasers);
         for (int i = 0; i < numLasers; i++) {
             GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3f, yCoords[i], -.5f), transform.rotation);
+            print("spawned");
         }
     }
 

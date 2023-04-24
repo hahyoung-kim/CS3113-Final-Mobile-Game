@@ -19,7 +19,7 @@ public class CameraMovement : MonoBehaviour
         if (GetComponent<GameManager>().GetLives() > 0 && !GetComponent<GameManager>().IsPaused()) {
             if (GetComponent<GameManager>().IsRainbow()) {
                 cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 5);
-            } else if (!GetComponent<GameManager>().LasersActivated()) {
+            } else {
                 cameraSpeed = ogSpd + (float) (Math.Log(player.transform.position.x) * 1.6f);
             }
             transform.position += new Vector3(cameraSpeed * Time.deltaTime, 0, 0);
