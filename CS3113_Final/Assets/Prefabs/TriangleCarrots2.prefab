@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7615480497352272839}
   - component: {fileID: 886296439714998949}
   - component: {fileID: 2669231172573317552}
+  - component: {fileID: 2367688025830237498}
   m_Layer: 0
   m_Name: Carrot (6)
   m_TagString: Carrot
@@ -111,6 +112,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &2367688025830237498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1129119838251886905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &2777211922662130184
 GameObject:
   m_ObjectHideFlags: 0
@@ -122,6 +137,7 @@ GameObject:
   - component: {fileID: 4651739220623278326}
   - component: {fileID: 2696832572549218708}
   - component: {fileID: 876742457977070209}
+  - component: {fileID: 7736446600353243734}
   m_Layer: 0
   m_Name: Carrot (9)
   m_TagString: Carrot
@@ -222,6 +238,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &7736446600353243734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2777211922662130184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &5700512884944717008
 GameObject:
   m_ObjectHideFlags: 0
@@ -233,6 +263,7 @@ GameObject:
   - component: {fileID: 2961299202890237486}
   - component: {fileID: 5547303532930303820}
   - component: {fileID: 7330797366721815641}
+  - component: {fileID: 7668165555140249256}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Carrot
@@ -333,6 +364,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &7668165555140249256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5700512884944717008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &6129726702036467627
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +389,7 @@ GameObject:
   - component: {fileID: 3681066378151689557}
   - component: {fileID: 6266363732685913143}
   - component: {fileID: 9201235484400181026}
+  - component: {fileID: 8869842718129642532}
   m_Layer: 0
   m_Name: Carrot (3)
   m_TagString: Carrot
@@ -444,6 +490,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &8869842718129642532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6129726702036467627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &6266151546784505235
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +515,7 @@ GameObject:
   - component: {fileID: 3526661601016651629}
   - component: {fileID: 6130075060236754447}
   - component: {fileID: 8959248146414877978}
+  - component: {fileID: 4511113468885925996}
   m_Layer: 0
   m_Name: Carrot (7)
   m_TagString: Carrot
@@ -555,6 +616,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &4511113468885925996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6266151546784505235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &7302897914941506402
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,6 +682,7 @@ GameObject:
   - component: {fileID: 975816930567896116}
   - component: {fileID: 7523705831350648150}
   - component: {fileID: 4696780410677796419}
+  - component: {fileID: 8838385321689215250}
   m_Layer: 0
   m_Name: Carrot (5)
   m_TagString: Carrot
@@ -707,6 +783,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &8838385321689215250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7750171588301881034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &8056219676339095772
 GameObject:
   m_ObjectHideFlags: 0
@@ -718,6 +808,7 @@ GameObject:
   - component: {fileID: 705269329602873890}
   - component: {fileID: 7794253712209873728}
   - component: {fileID: 5002656985398388821}
+  - component: {fileID: 7938365210676165128}
   m_Layer: 0
   m_Name: Carrot (1)
   m_TagString: Carrot
@@ -818,6 +909,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &7938365210676165128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8056219676339095772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &8280705398246983497
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +934,7 @@ GameObject:
   - component: {fileID: 1508167134158161335}
   - component: {fileID: 8146247324764832981}
   - component: {fileID: 6362049940106225600}
+  - component: {fileID: 890715438061518323}
   m_Layer: 0
   m_Name: Carrot (4)
   m_TagString: Carrot
@@ -929,6 +1035,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &890715438061518323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8280705398246983497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &8468644634520523277
 GameObject:
   m_ObjectHideFlags: 0
@@ -940,6 +1060,7 @@ GameObject:
   - component: {fileID: 1405761652982042867}
   - component: {fileID: 8530127778339836305}
   - component: {fileID: 6856405477239386756}
+  - component: {fileID: 8355998207404319784}
   m_Layer: 0
   m_Name: Carrot (8)
   m_TagString: Carrot
@@ -1040,6 +1161,20 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &8355998207404319784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8468644634520523277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
 --- !u!1 &8822651878827870833
 GameObject:
   m_ObjectHideFlags: 0
@@ -1051,6 +1186,7 @@ GameObject:
   - component: {fileID: 2050462230649407631}
   - component: {fileID: 8761729210521324013}
   - component: {fileID: 5823198551606274808}
+  - component: {fileID: 3720709205869575573}
   m_Layer: 0
   m_Name: Carrot (2)
   m_TagString: Carrot
@@ -1151,3 +1287,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &3720709205869575573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8822651878827870833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17

@@ -99,7 +99,6 @@ public class GameManager : MonoBehaviour
 
     public void AddCarrots(int num) {
         carrots += num;
-        print(carrots);
     }
 
     public void SetObsRem(bool b) {

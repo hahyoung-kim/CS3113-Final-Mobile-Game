@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4082050943435954677}
   - component: {fileID: 6720784031856941207}
   - component: {fileID: 8359462689096170370}
+  - component: {fileID: 2144695476736351725}
   m_Layer: 0
   m_Name: Carrot
   m_TagString: Carrot
@@ -111,3 +112,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.49386072, y: 0.40395054}
   m_EdgeRadius: 0
+--- !u!114 &2144695476736351725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6819210834448554763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5308ac2d8ddf8544da771d188d8273f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 0}
+  moveSpeed: 17
+  coinMoveScript: {fileID: 0}

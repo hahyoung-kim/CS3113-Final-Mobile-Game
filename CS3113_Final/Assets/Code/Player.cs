@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     public Image powerBgnd;
     public GameObject spawner;
     RigidbodyConstraints2D ogConst;
+    public GameObject coinDetectorObj;
+    bool coinDetectorIsActive = false;
  
     bool grounded = false;
     
@@ -49,6 +51,7 @@ public class Player : MonoBehaviour
         powerUI.SetActive(false); 
         ogConst = _rigidbody.constraints;
         StartCoroutine(WaitFly());
+        coinDetectorObj.SetActive(false);
 
     }
 
@@ -88,7 +91,9 @@ public class Player : MonoBehaviour
             StartCoroutine(FlashRed());
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
-            Destroy(other.gameObject);
+            if (!coinDetectorIsActive){
+                Destroy(other.gameObject);
+            }
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
@@ -111,6 +116,7 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator ActivateMagnet(float secs) {
+        print("done");
         _gameManager.SetMagnet(true);
         if (_gameManager.IsGhost()) {
             // magnet + ghost sprite
@@ -122,9 +128,15 @@ public class Player : MonoBehaviour
             _renderer.sprite = spriteArray[1]; 
         }
         
+        coinDetectorObj.SetActive(true);
+        coinDetectorIsActive = true;
+        PublicVars.magnetCollider = true;
         yield return new WaitForSeconds(secs);
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
+        coinDetectorObj.SetActive(false);
+        coinDetectorIsActive = false;
+        PublicVars.magnetCollider = false;
 
         _gameManager.SetMagnet(false);
 
