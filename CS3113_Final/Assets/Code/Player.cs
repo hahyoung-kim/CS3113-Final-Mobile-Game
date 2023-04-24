@@ -154,6 +154,8 @@ public class Player : MonoBehaviour
 
     IEnumerator ActivateGhost(float secs) {
         _gameManager.SetGhost(true);
+        _animator.SetBool("ghost", true);
+
         if (_gameManager.HasMagnet()) {
             // magnet + ghost sprite
             
@@ -166,6 +168,7 @@ public class Player : MonoBehaviour
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
         _gameManager.SetGhost(false);
+        _animator.SetBool("ghost", false);
 
         if (_gameManager.HasMagnet()) {
             // magnet sprite
