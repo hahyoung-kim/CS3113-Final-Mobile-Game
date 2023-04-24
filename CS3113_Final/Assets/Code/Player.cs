@@ -92,19 +92,16 @@ public class Player : MonoBehaviour
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
-            spawner.GetComponent<Spawn>().DeleteObstacles();
             Destroy(other.gameObject);
             StartCoroutine(DisplayPowerUI(powerIcons[0], "Magnet Bunny"));
             StartCoroutine(ActivateMagnet(10));
         } else if (other.CompareTag("Ghost")){
             _audioSource.PlayOneShot(ghostSound);
-            spawner.GetComponent<Spawn>().DeleteObstacles();
             Destroy(other.gameObject);
             StartCoroutine(DisplayPowerUI(powerIcons[1], "Ghost Bunny"));
             StartCoroutine(ActivateGhost(10));
         } else if (other.CompareTag("Star")){
             _audioSource.PlayOneShot(rainbowSound);
-            spawner.GetComponent<Spawn>().DeleteObstacles();
             Destroy(other.gameObject);
             StartCoroutine(DisplayPowerUI(powerIcons[2], "Rainbow Bunny"));
             StartCoroutine(ActivateRainbow(7));
@@ -219,16 +216,21 @@ public class Player : MonoBehaviour
     IEnumerator DisplayPowerUI(Sprite icon, string power) {
         powerUI.SetActive(true); 
         _gameManager.SetPause(true);
+        spawner.GetComponent<Spawn>().DeleteObstacles();
+
         powerIcon.sprite = icon;
         powerIcon.gameObject.SetActive(true);
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(.2f);
+
         _audioSource.PlayOneShot(boopSound);
         powerBgnd.gameObject.SetActive(true);
         yield return new WaitForSeconds(.2f);
+
         _audioSource.PlayOneShot(boopSound);
         powerText.text = power;
         powerText.gameObject.SetActive(true);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
+        
         powerUI.SetActive(false); 
         powerIcon.gameObject.SetActive(false);
         powerBgnd.gameObject.SetActive(false);

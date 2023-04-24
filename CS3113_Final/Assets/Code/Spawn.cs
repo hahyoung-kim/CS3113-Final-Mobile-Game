@@ -16,6 +16,7 @@ public class Spawn : MonoBehaviour
     public int powersMinInd;
     public int powersMaxInd;
     public GameObject laserBunnies;
+    public GameObject missileBunny;
 
     public float maxX;
     public float minX;
@@ -30,7 +31,7 @@ public class Spawn : MonoBehaviour
     private bool canSpawn = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
-    private bool prevLaser = false;
+    private string prev = "";
     private bool spawning = false;
     private int iterations = 0;
     private bool spawnNonLasers = true;
@@ -90,7 +91,7 @@ public class Spawn : MonoBehaviour
         spawning = true;
         if (player.transform.position.x >= 400 && (player.transform.position.x % 400 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
             _gameManager.SetLasers(true);
-            if (!prevLaser) {
+            if (prev != "l") {
                 yield return new WaitForSeconds(3);
             }
             if (iterations <= 0) {
@@ -98,11 +99,16 @@ public class Spawn : MonoBehaviour
             }
             
             SpawnLasers();
-            iterations -= 1;
-            print("it " + iterations);
+            
         } else if (spawnNonLasers) {
             _gameManager.SetLasers(false);
-            SpawnObsCrts();
+            int r = UnityEngine.Random.Range(0, 10);
+            if (player.transform.position.x >= 300 && r == 0 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) { // 10% chance missile
+                StartCoroutine(SpawnMissile());
+            } else { // 90% obstacle or carrots
+                SpawnObsCrts();
+            }
+
         }
         spawning = false;
     }
@@ -114,25 +120,46 @@ public class Spawn : MonoBehaviour
     }
 
     void SpawnLasers() {
-        
-        StartCoroutine(WaitSpawn(5.5f));
-        StartCoroutine(WaitNonLasers(10));
-        print("spawn lasers");
-        prevLaser = true;
+        StartCoroutine(WaitSpawn(5f));
+        StartCoroutine(WaitNonLasers(15));
+        prev = "l";
+        print("lasers");
         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
-        int numLasers = UnityEngine.Random.Range(0, yCoords.Length-1);
-        print(numLasers);
+        int numLasers = UnityEngine.Random.Range(1, yCoords.Length-1);
         for (int i = 0; i < numLasers; i++) {
             GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3f, yCoords[i], -.5f), transform.rotation);
-            print("spawned");
         }
+        iterations -= 1;
+        print("it " + iterations);
+    }
+
+    IEnumerator SpawnMissile() {
+        if (prev == "m") {
+            yield return new WaitForSeconds(0.5f);
+        } else {
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        prev = "m";
+        
+        print("missile");
+         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
+        // shuffle y coords to randomly select where bunnies will spawn
+        System.Random random = new System.Random();
+        yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
+        // int numMissiles = UnityEngine.Random.Range(1, 3);
+        // for (int i = 0; i < numMissiles; i++) {
+        //     GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[i], -1f), transform.rotation);
+        // }
+        GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[0], -1f), transform.rotation);
+        StartCoroutine(WaitNonLasers(1));
     }
 
     void SpawnObsCrts() {
-        prevLaser = false;
+        prev = "oc";
         int spawnType = UnityEngine.Random.Range(0, 20);
 
         int spawnInd;
@@ -175,7 +202,7 @@ public class Spawn : MonoBehaviour
             randomY = UnityEngine.Random.Range(minY, maxY);
         }
 
-        print(randomX);
+        //print(randomX);
         GameObject spawnedPrefab = Instantiate(spawnList[spawnInd], new Vector3(randomX + player.transform.position.x, randomY, -0.5f), transform.rotation);
         spawned.Add(spawnedPrefab);
     }

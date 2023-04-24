@@ -25,7 +25,7 @@ public class LaserBunnies : MonoBehaviour
     }
 
     IEnumerator Activate() {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         waves.SetActive(true);
         _audioSource.PlayOneShot(chargeSound);
         yield return new WaitForSeconds(2.5f);

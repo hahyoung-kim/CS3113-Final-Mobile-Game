@@ -3208,6 +3208,7 @@ MonoBehaviour:
   powersMinInd: 7
   powersMaxInd: 9
   laserBunnies: {fileID: 8753625221996799283, guid: 99017a5b372799d4685a47ce2f616249, type: 3}
+  missileBunny: {fileID: 6606613483128115916, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
   maxX: 20
   minX: 16
   timeBetweenSpawn: 2
@@ -9795,7 +9796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6606613483128115916, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4282811798218508693, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
