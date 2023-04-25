@@ -161,7 +161,7 @@ public class Player : MonoBehaviour
 
         if (_gameManager.HasMagnet()) {
             // magnet + ghost sprite
-            
+            _animator.SetBool("magnetGhost", true);
         } else {
             _renderer.sprite = spriteArray[2]; 
         }
@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _gameManager.SetGhost(false);
         _animator.SetBool("ghost", false);
-
+        _animator.SetBool("magnetGhost", false);
         if (_gameManager.HasMagnet()) {
             // magnet sprite
             _renderer.sprite = spriteArray[1]; 
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
         if (_gameManager.HasMagnet()) {
             // magnet + rainbow sprite
-
+            _animator.SetBool("magnetRainbow", true);
         } else {
            _renderer.sprite = spriteArray[3]; 
         }
@@ -200,6 +200,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _gameManager.SetRainbow(false);
         _animator.SetBool("rainbow", false);
+        _animator.SetBool("magnetRainbow", false);
 
         if (_gameManager.HasMagnet()) {
             // magnet sprite
