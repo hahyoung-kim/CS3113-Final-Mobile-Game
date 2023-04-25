@@ -6,6 +6,27 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
+/* Player Prefs to keep track of
+
+carrots
+lvl of power ups
+    magnetLvl
+    boostLvl
+    shieldLvl
+    coinMulLvl
+if the player owns the trail (act as bool 0 and 1)
+    stars
+    snow
+    blossoms
+    rainbow
+which trail is equipped (act as bool 0 and 1)
+    starsEq
+    snowEq
+    blossomsEq
+    rainbowEq
+
+*/
+
 public class UI_Shop : MonoBehaviour
 {
      private int maxLvl = 5;
