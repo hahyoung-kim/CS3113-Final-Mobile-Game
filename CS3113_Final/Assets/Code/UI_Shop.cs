@@ -60,7 +60,7 @@ public class UI_Shop : MonoBehaviour
      private int[] coinMulCost = {75, 125, 200, 300, 425};
 
     void Start(){
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void FixedUpdate()

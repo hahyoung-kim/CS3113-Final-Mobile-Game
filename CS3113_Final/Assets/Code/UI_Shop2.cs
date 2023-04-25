@@ -53,7 +53,7 @@ public class UI_Shop2 : MonoBehaviour
     private int rainbowCost = 1000;
 
     void Start(){
-        PlayerPrefs.DeleteAll();
+        //PlayerPrefs.DeleteAll();
     }
 
     public void FixedUpdate(){
