@@ -27,7 +27,7 @@ public class UI_Shop : MonoBehaviour
      public static int boostLvl = 0;
      public static int shieldLvl = 0;
      public static int coinMulLvl = 0;
-     public static int carrots = 4000;
+     public static int carrots = 0;
      bool canBuyMag;
      bool canBuyBoost;
      bool canBuyShield;
@@ -165,13 +165,5 @@ public class UI_Shop : MonoBehaviour
 
     public void next(){
         SceneManager.LoadScene("Shop2");
-    }
-
-    public void back(){
-        SceneManager.LoadScene("Shop");
-    }
-
-    public void play(){
-        SceneManager.LoadScene("Level1");
     }
 }
