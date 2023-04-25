@@ -91,9 +91,7 @@ public class Player : MonoBehaviour
             StartCoroutine(FlashRed());
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
-            if (!coinDetectorIsActive){
-                Destroy(other.gameObject);
-            }
+            Destroy(other.gameObject);
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
