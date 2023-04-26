@@ -490,12 +490,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238420646}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.61, y: -0.072, z: 0}
+  m_LocalPosition: {x: 0.6100004, y: -0.07199991, z: 0}
   m_LocalScale: {x: 1.2903227, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1218444352}
-  m_RootOrder: 5
+  m_Father: {fileID: 978274644}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &238420648
 ParticleSystemRenderer:
@@ -5302,12 +5302,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267231222}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.62, y: 0.083, z: 0}
+  m_LocalPosition: {x: 0.61999977, y: 0.082999915, z: 0}
   m_LocalScale: {x: 1.2903227, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1218444352}
-  m_RootOrder: 4
+  m_Father: {fileID: 978274644}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &267231224
 ParticleSystemRenderer:
@@ -10877,6 +10877,40 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &978274643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 978274644}
+  m_Layer: 0
+  m_Name: Rainbow Trail
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &978274644
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 978274643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1582183596}
+  - {fileID: 267231223}
+  - {fileID: 238420647}
+  m_Father: {fileID: 1218444352}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &981003032
 GameObject:
   m_ObjectHideFlags: 0
@@ -16355,9 +16389,7 @@ Transform:
   - {fileID: 1104571315}
   - {fileID: 1778647945}
   - {fileID: 2069187273}
-  - {fileID: 1582183596}
-  - {fileID: 267231223}
-  - {fileID: 238420647}
+  - {fileID: 978274644}
   m_Father: {fileID: 1218243958}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16773,7 +16805,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1532490012
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17113,12 +17145,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582183595}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.5600011, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5600007, y: 0, z: 0}
   m_LocalScale: {x: 1.2903227, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1218444352}
-  m_RootOrder: 3
+  m_Father: {fileID: 978274644}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!199 &1582183597
 ParticleSystemRenderer:
@@ -32951,6 +32983,10 @@ PrefabInstance:
     - target: {fileID: 8546070555221910448, guid: 5500ae3b6a92a8448bdabb2da30092d7, type: 3}
       propertyPath: m_Name
       value: Sakura
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546070555221910448, guid: 5500ae3b6a92a8448bdabb2da30092d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8546070555221910451, guid: 5500ae3b6a92a8448bdabb2da30092d7, type: 3}
       propertyPath: m_RootOrder
