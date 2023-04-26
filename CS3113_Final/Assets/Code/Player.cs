@@ -37,12 +37,19 @@ public class Player : MonoBehaviour
     RigidbodyConstraints2D ogConst;
     public GameObject coinDetectorObj;
     bool coinDetectorIsActive = false;
+    public GameObject starsTrail;
+    public GameObject snowTrail;
+    public GameObject blossomsTrail;
+    public GameObject rainbowTrail;
  
     bool grounded = false;
     
 
     void Start()
     {
+        // uncomment to reset all play prefs
+        // PlayerPrefs.DeleteAll();
+
         _rigidbody = GetComponent<Rigidbody2D>();
         _animator = GetComponent<Animator> ();
         _renderer = GetComponent<SpriteRenderer>();
@@ -52,7 +59,6 @@ public class Player : MonoBehaviour
         ogConst = _rigidbody.constraints;
         StartCoroutine(WaitFly());
         coinDetectorObj.SetActive(false);
-
     }
 
     void FixedUpdate()
@@ -82,6 +88,43 @@ public class Player : MonoBehaviour
         //     transform.localScale *= new Vector2(-1,1);
         // }
         // _animator.SetFloat("Speed", Mathf.Abs(xSpeed));
+
+        // track power up lvls
+        magnetLvl = PlayerPrefs.GetInt("magnetLvl", magnetLvl);
+        boostLvl = PlayerPrefs.GetInt("boostLvl", boostLvl);
+        shieldLvl = PlayerPrefs.GetInt("shieldLvl", shieldLvl);
+        coinMulLvl = PlayerPrefs.GetInt("coinMulLvl", coinMulLvl);
+
+        // equips trails
+        starsEq = PlayerPrefs.GetInt("starsEq", starsEq);
+        snowEq = PlayerPrefs.GetInt("snowEq", snowEq);
+        blossomsEq = PlayerPrefs.GetInt("blossomsEq", blossomsEq);
+        rainbowEq = PlayerPrefs.GetInt("rainbowEq", rainbowEq);
+
+        if (starsEq == 1){
+            starsTrail.SetActive(true);
+            snowTrail.SetActive(false);
+            blossomsTrail.SetActive(false);
+            rainbowTrail.SetActive(false);
+        }
+        if (snowEq == 1){
+            starsTrail.SetActive(false);
+            snowTrail.SetActive(true);
+            blossomsTrail.SetActive(false);
+            rainbowTrail.SetActive(false);
+        }
+        if (blossomsEq == 1){
+            starsTrail.SetActive(false);
+            snowTrail.SetActive(false);
+            blossomsTrail.SetActive(true);
+            rainbowTrail.SetActive(false);
+        }
+        if (rainbowEq == 1){
+            starsTrail.SetActive(false);
+            snowTrail.SetActive(false);
+            blossomsTrail.SetActive(false);
+            rainbowTrail.SetActive(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -127,11 +170,13 @@ public class Player : MonoBehaviour
         } else {
             _renderer.sprite = spriteArray[1]; 
         }
+
+        int secondsToAdd = magnetLvl * 2;
         
         coinDetectorObj.SetActive(true);
         coinDetectorIsActive = true;
         PublicVars.magnetCollider = true;
-        yield return new WaitForSeconds(secs);
+        yield return new WaitForSeconds(secs + secondsToAdd);
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
         coinDetectorObj.SetActive(false);
@@ -163,9 +208,10 @@ public class Player : MonoBehaviour
         } else {
             _renderer.sprite = spriteArray[2]; 
         }
-    
-        yield return new WaitForSeconds(secs);
 
+        int secondsToAdd = boostLvl * 2;
+    
+        yield return new WaitForSeconds(secs + secondsToAdd);
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
         _gameManager.SetGhost(false);
@@ -192,7 +238,9 @@ public class Player : MonoBehaviour
            _renderer.sprite = spriteArray[3]; 
         }
         
-        yield return new WaitForSeconds(secs);
+        int secondsToAdd = shieldLvl * 2;
+
+        yield return new WaitForSeconds(secs + secondsToAdd);
 
         StartCoroutine(Flicker());
         yield return new WaitForSeconds(2f);
