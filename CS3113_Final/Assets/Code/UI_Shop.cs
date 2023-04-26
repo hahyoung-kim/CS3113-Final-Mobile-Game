@@ -48,7 +48,7 @@ public class UI_Shop : MonoBehaviour
      public static int boostLvl = 0;
      public static int shieldLvl = 0;
      public static int coinMulLvl = 0;
-     public static int carrots = 0;
+     public static int carrots = 4000;
      bool canBuyMag;
      bool canBuyBoost;
      bool canBuyShield;
@@ -141,6 +141,7 @@ public class UI_Shop : MonoBehaviour
     public void magnetButton(){
         if (canBuyMag && magnetLvl != maxLvl){
             carrots -= magnetCost[magnetLvl];
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("magnetLvl", magnetLvl+1);
         }
         if (magnetLvl == maxLvl || canBuyMag == false){
@@ -152,6 +153,7 @@ public class UI_Shop : MonoBehaviour
     public void boostButton(){
         if (canBuyBoost && boostLvl != maxLvl){
             carrots -= boostCost[boostLvl];
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("boostLvl", boostLvl+1);
         }
         if (boostLvl == maxLvl || canBuyBoost == false){
@@ -163,6 +165,7 @@ public class UI_Shop : MonoBehaviour
     public void shieldButton(){
         if (canBuyShield && shieldLvl != maxLvl){
             carrots -= shieldCost[shieldLvl];
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("shieldLvl", shieldLvl+1);
         }
         if (shieldLvl == maxLvl || canBuyShield == false){
@@ -173,6 +176,7 @@ public class UI_Shop : MonoBehaviour
     public void coinMulButton(){
         if (canBuyCoinMul && coinMulLvl != maxLvl){
             carrots -= coinMulCost[coinMulLvl];
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("coinMulLvl", coinMulLvl+1);
         }
         if (shieldLvl == maxLvl || canBuyCoinMul == false){

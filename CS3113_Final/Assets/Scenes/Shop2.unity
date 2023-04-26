@@ -6425,7 +6425,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.5254902}
     m_PressedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.9137255}
     m_SelectedColor: {r: 1, g: 0.93725497, b: 0.9803922, a: 0.49803922}
-    m_DisabledColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0}
+    m_DisabledColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 0.57254905}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11406,7 +11406,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.56078434}
     m_PressedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.95686275}
     m_SelectedColor: {r: 1, g: 0.93725497, b: 0.9803922, a: 0.53333336}
-    m_DisabledColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0}
+    m_DisabledColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 0.56078434}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -11727,7 +11727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a886199d13d714faee613d2e5a136a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroungSpeed: 0.5
+  backgroungSpeed: 0.1
   backgroundRenderer: {fileID: 569017333}
 --- !u!23 &569017333
 MeshRenderer:
@@ -12588,7 +12588,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.50980395}
     m_PressedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.972549}
     m_SelectedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.5176471}
-    m_DisabledColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0}
+    m_DisabledColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 0.5686275}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -24459,7 +24459,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.5529412}
     m_PressedColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0.94509804}
     m_SelectedColor: {r: 1, g: 0.93725497, b: 0.9803922, a: 0.49803922}
-    m_DisabledColor: {r: 0.70980394, g: 0.9568628, b: 0.8745099, a: 0}
+    m_DisabledColor: {r: 0.7176471, g: 0.7176471, b: 0.7176471, a: 0.5803922}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -26714,10 +26714,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2142576299}
-  - component: {fileID: 2142576298}
-  - component: {fileID: 2142576297}
   - component: {fileID: 2142576296}
-  - component: {fileID: 2142576295}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -26725,20 +26722,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2142576295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142576294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cb9752fe58f25642a414cbe7a66760e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreUI: {fileID: 0}
-  player: {fileID: 0}
 --- !u!82 &2142576296
 AudioSource:
   m_ObjectHideFlags: 0
@@ -26835,36 +26818,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2142576297
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142576294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c942f7cede4b95043bb1ffa7ecca7f84, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lives: 1
-  currLvl: Level1
-  gameOverLevel: Level1
-  player: {fileID: 0}
---- !u!114 &2142576298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2142576294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8f240299ea8d3d949a60c27e1140d13a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameraSpeed: 1
-  player: {fileID: 0}
 --- !u!4 &2142576299
 Transform:
   m_ObjectHideFlags: 0

@@ -32872,6 +32872,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
+      propertyPath: starsTrail
+      value: 
+      objectReference: {fileID: 1104571314}
+    - target: {fileID: 3383342645424960872, guid: c7558c63d3490844aab604706d16b37a, type: 3}
       propertyPath: pickupSound
       value: 
       objectReference: {fileID: 8300000, guid: 3a702ea4f67805f4f8e4baa2ec699eed, type: 3}

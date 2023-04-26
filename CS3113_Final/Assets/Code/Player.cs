@@ -44,6 +44,14 @@ public class Player : MonoBehaviour
  
     bool grounded = false;
     
+    public static int magnetLvl = 0;
+    public static int boostLvl = 0;
+    public static int shieldLvl = 0;
+    public static int coinMulLvl = 0;
+    public static int starsEq = 0;
+    public static int snowEq = 0;
+    public static int blossomsEq = 0;
+    public static int rainbowEq = 0;
 
     void Start()
     {

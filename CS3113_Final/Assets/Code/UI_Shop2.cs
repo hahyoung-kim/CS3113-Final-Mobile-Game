@@ -35,7 +35,7 @@ public class UI_Shop2 : MonoBehaviour
     public static int snow = 0;
     public static int blossoms = 0;
     public static int rainbow = 0;
-    public static int carrots = 4000;
+    public static int carrots = 0;
 
     public static int starsEq = 0;
     public static int snowEq = 0;
@@ -53,7 +53,7 @@ public class UI_Shop2 : MonoBehaviour
     private int rainbowCost = 1000;
 
     void Start(){
-        //PlayerPrefs.DeleteAll();
+        // PlayerPrefs.DeleteAll();
     }
 
     public void FixedUpdate(){
@@ -67,6 +67,8 @@ public class UI_Shop2 : MonoBehaviour
         snowEq = PlayerPrefs.GetInt("snowEq", snowEq);
         blossomsEq = PlayerPrefs.GetInt("blossomsEq", blossomsEq);
         rainbowEq = PlayerPrefs.GetInt("rainbowEq", rainbowEq);
+
+        print(carrots);
 
         coinsUI.text = "" + carrots;
         if (stars < maxLvl){
@@ -141,6 +143,10 @@ public class UI_Shop2 : MonoBehaviour
             starsUI.gameObject.SetActive(false);
             equip1.gameObject.SetActive(true);
             equip1.interactable = false;
+            equipped1.text = "equipped";
+            equipped2.text = "equip";
+            equipped3.text = "equip";
+            equipped4.text = "equip";
         }
         else{
             carrot1.gameObject.SetActive(true);
@@ -159,6 +165,10 @@ public class UI_Shop2 : MonoBehaviour
             snowUI.gameObject.SetActive(false);
             equip2.gameObject.SetActive(true);
             equip2.interactable = false;
+            equipped1.text = "equip";
+            equipped2.text = "equipped";
+            equipped3.text = "equip";
+            equipped4.text = "equip";
         }
         else{
             carrot2.gameObject.SetActive(true);
@@ -177,6 +187,10 @@ public class UI_Shop2 : MonoBehaviour
             blossomsUI.gameObject.SetActive(false);
             equip3.gameObject.SetActive(true);
             equip3.interactable = false;
+            equipped1.text = "equip";
+            equipped2.text = "equip";
+            equipped3.text = "equipped";
+            equipped4.text = "equip";
         }
         else{
             carrot3.gameObject.SetActive(true);
@@ -195,6 +209,10 @@ public class UI_Shop2 : MonoBehaviour
             rainbowUI.gameObject.SetActive(false);
             equip4.gameObject.SetActive(true);
             equip4.interactable = false;
+            equipped1.text = "equip";
+            equipped2.text = "equip";
+            equipped3.text = "equip";
+            equipped4.text = "equipped";
         }
         else{
             carrot4.gameObject.SetActive(true);
@@ -205,8 +223,9 @@ public class UI_Shop2 : MonoBehaviour
 
     public void starsButton(){
         if (canBuyStars && stars < maxLvl){
+            carrots -= starsCost;
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("stars", 1);
-            print("set");
         }
         carrot1.gameObject.SetActive(false);
         starsUI.gameObject.SetActive(false);
@@ -233,8 +252,9 @@ public class UI_Shop2 : MonoBehaviour
 
     public void snowButton(){
         if (canBuySnow && snow < maxLvl){
+            carrots -= snowCost;
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("snow", 1);
-            print("set");
         }
         carrot2.gameObject.SetActive(false);
         snowUI.gameObject.SetActive(false);
@@ -260,8 +280,9 @@ public class UI_Shop2 : MonoBehaviour
 
     public void blossomsButton(){
         if (canBuyBlossoms && blossoms < maxLvl){
+            carrots -= blossomsCost;
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("blossoms", 1);
-            print("set");
         }
         carrot3.gameObject.SetActive(false);
         blossomsUI.gameObject.SetActive(false);
@@ -287,6 +308,8 @@ public class UI_Shop2 : MonoBehaviour
 
     public void rainbowButton(){
         if (canBuyRainbow && rainbow < maxLvl){
+            carrots -= rainbowCost;
+            PlayerPrefs.SetInt("carrots", carrots);
             PlayerPrefs.SetInt("rainbow", 1);
         }
         carrot4.gameObject.SetActive(false);
