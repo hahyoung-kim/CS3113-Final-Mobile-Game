@@ -15953,6 +15953,8 @@ MonoBehaviour:
 
     highscore:
 
+    carrots:
+
 '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f7424d1836b29d45abfeed35f26a9ba, type: 2}

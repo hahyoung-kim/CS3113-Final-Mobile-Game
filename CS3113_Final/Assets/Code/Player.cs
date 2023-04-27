@@ -42,6 +42,7 @@ public class Player : MonoBehaviour
     public GameObject blossomsTrail;
     public GameObject rainbowTrail;
  
+    public ScoreManager carrots;
     bool grounded = false;
     
     public static int magnetLvl = 0;
@@ -67,6 +68,8 @@ public class Player : MonoBehaviour
         ogConst = _rigidbody.constraints;
         StartCoroutine(WaitFly());
         coinDetectorObj.SetActive(false);
+    
+        carrots = gameObject.GetComponent<ScoreManager>();
     }
 
     void FixedUpdate()
@@ -143,6 +146,7 @@ public class Player : MonoBehaviour
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
             Destroy(other.gameObject);
+            ScoreManager.AddPoints(1);
             _gameManager.AddCarrots(1);
         } else if (other.CompareTag("Magnet")){
             _audioSource.PlayOneShot(magSound);
