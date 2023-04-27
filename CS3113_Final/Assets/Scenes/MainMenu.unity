@@ -213,11 +213,11 @@ RectTransform:
   m_Father: {fileID: 1457945647}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -65}
-  m_SizeDelta: {x: 415, y: 50}
-  m_Pivot: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -60}
+  m_SizeDelta: {x: 749, y: 50}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &569610704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,9 +238,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'LOST IN THE
-
-    BLOSSOMS'
+  m_text: LOST IN THE BLOSSOMS
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1f7424d1836b29d45abfeed35f26a9ba, type: 2}
   m_sharedMaterial: {fileID: -134722290739983716, guid: 1f7424d1836b29d45abfeed35f26a9ba, type: 2}
@@ -267,8 +265,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
-  m_fontSizeBase: 50
+  m_fontSize: 65
+  m_fontSizeBase: 65
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
