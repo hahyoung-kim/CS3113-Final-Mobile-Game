@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         hasMag = false;
         isGh = false;
         isRb = false;
+        Application.targetFrameRate = 60;
     }
 
     public void FixedUpdate(){
