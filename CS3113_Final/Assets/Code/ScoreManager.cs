@@ -15,13 +15,13 @@
      void Start()
      {
          score = 0;
+         carrots = 0;
          highscore = PlayerPrefs.GetInt ("highscore", highscore);
          scoreUI.text = "score: " + score + "\nhighscore: " + highscore + "\ncarrots: " + carrots;
          int startingPosX = (int)player.transform.position.x;   
      }
 
      void FixedUpdate(){
-        carrots = PlayerPrefs.GetInt("carrots", carrots);
         if (GetComponent<GameManager>().GetLives() > 0) {
             score = (int)player.transform.position.x - startingPosX;
             scoreUI.text = "score: " + score + "\nhighscore: " + highscore + "\ncarrots: " + carrots;
@@ -35,12 +35,11 @@
  
      public static void AddPoints (int pointsToAdd)
      {
-        //  score += pointsToAdd;
-        //  carrots += pointsToAdd;
+        carrots += pointsToAdd;
      }
  
      public static void Reset()
      {
-         score = 0;
+         carrots = 0;
      }
  }

@@ -17,6 +17,8 @@ public class GameManager : MonoBehaviour
     //public Animator animator;
     AudioSource _audioSource;
     public GameObject player;
+    public GameObject canvas;
+    public GameObject title;
 
     private bool isGh = false;
     private bool hasMag = false;
@@ -41,7 +43,25 @@ public class GameManager : MonoBehaviour
     }
 
     public void FixedUpdate(){
+        if (PublicVars.restarting){
+            preRestart();
+        }
+        if (!PublicVars.restarting){
+            postRestart();
+        }
         PlayerPrefs.SetInt("carrots", carrots);
+    }
+
+    public void preRestart(){
+        isPaused = true;
+        canvas.gameObject.SetActive(false);
+        title.gameObject.SetActive(true);
+    }
+
+    public void postRestart(){
+        isPaused = false;
+        canvas.gameObject.SetActive(true);
+        title.gameObject.SetActive(false);
     }
 
     public void loseLife(int lostLife){
@@ -71,6 +91,7 @@ public class GameManager : MonoBehaviour
         //animator.SetBool("Fade", true);
         //yield return new WaitUntil(()=>black.color.a==1);
         SceneManager.LoadScene(gameOverLevel);
+        PublicVars.restarting = true;
     }
 
     // public IEnumerator Fade(){
