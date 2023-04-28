@@ -16843,7 +16843,7 @@ MonoBehaviour:
   carrotsMaxInd: 6
   powersMinInd: 7
   powersMaxInd: 9
-  laserBunnies: {fileID: 8753625221996799283, guid: 99017a5b372799d4685a47ce2f616249, type: 3}
+  laserBunnies: {fileID: 2978841820158810597, guid: 96850d326ec95734c9a841d0e24075b3, type: 3}
   missileBunny: {fileID: 6606613483128115916, guid: 393cbcbc5d4c0774fbd2d92236aed5b7, type: 3}
   maxX: 20
   minX: 16
