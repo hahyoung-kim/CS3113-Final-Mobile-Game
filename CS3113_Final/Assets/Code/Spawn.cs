@@ -130,7 +130,7 @@ public class Spawn : MonoBehaviour
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();
         int numLasers = UnityEngine.Random.Range(1, yCoords.Length-1);
         for (int i = 0; i < numLasers; i++) {
-            GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 3f, yCoords[i], -.5f), transform.rotation);
+            GameObject spawnedLaser = Instantiate(laserBunnies, new Vector3(player.transform.position.x + 4.75f, yCoords[i], -.5f), transform.rotation);
         }
         iterations -= 1;
         print("it " + iterations);
@@ -154,7 +154,7 @@ public class Spawn : MonoBehaviour
         // for (int i = 0; i < numMissiles; i++) {
         //     GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[i], -1f), transform.rotation);
         // }
-        GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[0], -1f), transform.rotation);
+        GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 11.25f, yCoords[0], -1f), transform.rotation);
         //StartCoroutine(WaitNonLasers(1));
     }
 
