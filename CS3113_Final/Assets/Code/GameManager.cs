@@ -40,6 +40,9 @@ public class GameManager : MonoBehaviour
     {   
         _audioSource = GetComponent<AudioSource>();
         carrots = PlayerPrefs.GetInt("carrots", 0);
+        hasMag = false;
+        isGh = false;
+        isRb = false;
     }
 
     public void FixedUpdate(){
