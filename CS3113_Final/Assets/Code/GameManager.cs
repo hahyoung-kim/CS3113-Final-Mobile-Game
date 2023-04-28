@@ -11,14 +11,14 @@ public class GameManager : MonoBehaviour
     //public TextMeshProUGUI livesUI;
     //public TextMeshProUGUI reduceHealthUI;
     public string currLvl = "Level1";
-    public string gameOverLevel= "Level1";
+    public string gameOverLevel= "MainMenu";
     //public GameObject explosion;
     //public Image black;
     //public Animator animator;
     AudioSource _audioSource;
     public GameObject player;
     public GameObject canvas;
-    public GameObject title;
+    //public GameObject title;
 
     private bool isGh = false;
     private bool hasMag = false;
@@ -46,26 +46,26 @@ public class GameManager : MonoBehaviour
     }
 
     public void FixedUpdate(){
-        if (PublicVars.restarting){
-            preRestart();
-        }
-        if (!PublicVars.restarting){
-            postRestart();
-        }
+        // if (PublicVars.restarting){
+        //     preRestart();
+        // }
+        // if (!PublicVars.restarting){
+        //     postRestart();
+        // }
         PlayerPrefs.SetInt("carrots", carrots);
     }
 
-    public void preRestart(){
-        isPaused = true;
-        canvas.gameObject.SetActive(false);
-        title.gameObject.SetActive(true);
-    }
+    // public void preRestart(){
+    //     isPaused = true;
+    //     canvas.gameObject.SetActive(false);
+    //     title.gameObject.SetActive(true);
+    // }
 
-    public void postRestart(){
-        isPaused = false;
-        canvas.gameObject.SetActive(true);
-        title.gameObject.SetActive(false);
-    }
+    // public void postRestart(){
+    //     isPaused = false;
+    //     canvas.gameObject.SetActive(true);
+    //     title.gameObject.SetActive(false);
+    // }
 
     public void loseLife(int lostLife){
         lives -= lostLife;
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         //animator.SetBool("Fade", true);
         //yield return new WaitUntil(()=>black.color.a==1);
         SceneManager.LoadScene(gameOverLevel);
-        PublicVars.restarting = true;
+        //PublicVars.restarting = true;
     }
 
     // public IEnumerator Fade(){

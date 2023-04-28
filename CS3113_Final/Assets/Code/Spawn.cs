@@ -145,8 +145,7 @@ public class Spawn : MonoBehaviour
         
         prev = "m";
         
-        print("missile");
-         float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
+        float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();

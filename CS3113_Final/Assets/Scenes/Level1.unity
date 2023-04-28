@@ -28083,7 +28083,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lives: 1
   currLvl: Level1
-  gameOverLevel: Level1
+  gameOverLevel: MainMenu
   player: {fileID: 1203076797}
   canvas: {fileID: 1711364113}
   title: {fileID: 939578612}
@@ -33310,7 +33310,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a886199d13d714faee613d2e5a136a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroungSpeed: 0.5
+  ogSpd: 1
   backgroundRenderer: {fileID: 2097573219}
 --- !u!23 &2097573219
 MeshRenderer:
