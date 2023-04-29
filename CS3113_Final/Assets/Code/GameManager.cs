@@ -92,6 +92,9 @@ public class GameManager : MonoBehaviour
     private void PlayerDeath() {
         //Instantiate(explosion, player.transform.position, Quaternion.identity);
         Destroy(player);
+        hasMag = false;
+        isGh = false;
+        isRb = false;
         //animator.SetBool("Fade", true);
         //yield return new WaitUntil(()=>black.color.a==1);
         SceneManager.LoadScene(gameOverLevel);
