@@ -95,6 +95,7 @@ public class GameManager : MonoBehaviour
         hasMag = false;
         isGh = false;
         isRb = false;
+        PublicVars.magnetCollider = false;
         //animator.SetBool("Fade", true);
         //yield return new WaitUntil(()=>black.color.a==1);
         SceneManager.LoadScene(gameOverLevel);
@@ -135,6 +136,7 @@ public class GameManager : MonoBehaviour
 
     public void SetMagnet(bool b) {
         hasMag = b;
+        PublicVars.magnetCollider = b;
     }
 
     public void SetGhost(bool b) {

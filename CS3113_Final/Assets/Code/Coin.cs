@@ -6,13 +6,16 @@ public class Coin : MonoBehaviour
 {
     public Transform playerTransform;
     public float moveSpeed = 17f;
+    public GameObject player;
+    GameManager _gameManager;
 
     void Start(){
       playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+      _gameManager = GameObject.FindObjectOfType<GameManager>();
     }
 
     void Update(){
-      if (PublicVars.magnetCollider && Vector3.Distance(playerTransform.position, transform.position) < 4){
+      if (_gameManager.GetLives() > 0 && PublicVars.magnetCollider && _gameManager.HasMagnet() && Vector3.Distance(playerTransform.position, transform.position) < 4){
         transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
       }
     }

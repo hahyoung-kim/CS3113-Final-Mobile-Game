@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class LoopingBackground : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class LoopingBackground : MonoBehaviour
     public float ogSpd;
     public Renderer backgroundRenderer;
     GameManager _gameManager;
+    public GameObject player;
 
     void Start()
     {
@@ -16,7 +18,15 @@ public class LoopingBackground : MonoBehaviour
 
     void Update()
     {
-        backgroundRenderer.material.mainTextureOffset += new Vector2(ogSpd + Time.deltaTime * 0.25f,0f);
+        
+        print(backgroundRenderer.material.mainTextureOffset);
+        if (_gameManager.GetLives() > 0 && !_gameManager.IsPaused()) {
+            if (_gameManager.IsRainbow()) {
+                backgroundRenderer.material.mainTextureOffset += new Vector2(ogSpd + Time.deltaTime * 0.2f * (float) (Math.Log(player.transform.position.x)),0f);
+            } else {
+                backgroundRenderer.material.mainTextureOffset += new Vector2(ogSpd + Time.deltaTime * 0.05f * (float) (Math.Log(player.transform.position.x)),0f);
+            }
+        }
         
     }
 }

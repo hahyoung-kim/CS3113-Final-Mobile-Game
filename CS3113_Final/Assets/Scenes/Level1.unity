@@ -28086,7 +28086,6 @@ MonoBehaviour:
   gameOverLevel: MainMenu
   player: {fileID: 1203076797}
   canvas: {fileID: 1711364113}
-  title: {fileID: 939578612}
 --- !u!114 &1908279396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33312,6 +33311,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ogSpd: 1
   backgroundRenderer: {fileID: 2097573219}
+  player: {fileID: 1203076797}
 --- !u!23 &2097573219
 MeshRenderer:
   m_ObjectHideFlags: 0
