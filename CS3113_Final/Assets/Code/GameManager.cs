@@ -20,6 +20,11 @@ public class GameManager : MonoBehaviour
     public GameObject canvas;
     //public GameObject title;
 
+    public MeshRenderer bgnd;
+    public Texture defaultBgnd;
+    public Texture ghostBgnd;
+    public Texture rainbowBgnd;
+
     private bool isGh = false;
     private bool hasMag = false;
     private bool isRb = false;
@@ -44,6 +49,7 @@ public class GameManager : MonoBehaviour
         isGh = false;
         isRb = false;
         Application.targetFrameRate = 60;
+        defaultBgnd = bgnd.material.mainTexture;
     }
 
     public void FixedUpdate(){
@@ -141,10 +147,20 @@ public class GameManager : MonoBehaviour
 
     public void SetGhost(bool b) {
         isGh = b;
+        if (!b) {
+            bgnd.material.mainTexture  = defaultBgnd;
+        } else {
+            bgnd.material.mainTexture  = ghostBgnd;
+        }
     }
 
     public void SetRainbow(bool b) {
         isRb = b;
+        if (!b) {
+            bgnd.material.mainTexture  = defaultBgnd;
+        } else {
+            bgnd.material.mainTexture  = rainbowBgnd;
+        }
     }
 
     public bool HasMagnet() {

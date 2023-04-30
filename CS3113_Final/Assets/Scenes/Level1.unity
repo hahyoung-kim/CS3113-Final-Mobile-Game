@@ -28086,6 +28086,10 @@ MonoBehaviour:
   gameOverLevel: MainMenu
   player: {fileID: 1203076797}
   canvas: {fileID: 1711364113}
+  bgnd: {fileID: 2097573219}
+  defaultBgnd: {fileID: 2800000, guid: bb12327a80c391045abb113459ca3ba5, type: 3}
+  ghostBgnd: {fileID: 2800000, guid: e143774ea92a17949a5b59d30e6999a7, type: 3}
+  rainbowBgnd: {fileID: 2800000, guid: 929e2f8aa4d499d4b89c4dd6c8470697, type: 3}
 --- !u!114 &1908279396
 MonoBehaviour:
   m_ObjectHideFlags: 0

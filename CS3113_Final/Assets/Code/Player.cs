@@ -195,14 +195,12 @@ public class Player : MonoBehaviour
         _animator.SetBool("magnet", true);
 
         if (_gameManager.IsGhost()) {
-            // magnet + ghost sprite
-
+            // magnet + ghost
+            _animator.SetBool("magnetGhost", true);
         } else if (_gameManager.IsRainbow()) {
-            // magnet + rainbow sprite
-
-        } else {
-            _renderer.sprite = spriteArray[1]; 
-        }
+            // magnet + rainbow
+            _animator.SetBool("magnetRainbow", true);
+        } 
 
         int secondsToAdd = magnetLvl * 2;
         
@@ -218,17 +216,8 @@ public class Player : MonoBehaviour
 
         _gameManager.SetMagnet(false);
         _animator.SetBool("magnet", false);
-
-        if (_gameManager.IsGhost()) {
-            // ghost sprite
-            _renderer.sprite = spriteArray[2]; 
-        } else if (_gameManager.IsRainbow()) {
-            // rainbow sprite
-            _renderer.sprite = spriteArray[3]; 
-        } else {
-            // default sprite
-           _renderer.sprite = spriteArray[0]; 
-        }
+        _animator.SetBool("magnetRainbow", false);
+        _animator.SetBool("magnetGhost", false);
     }
 
     IEnumerator ActivateGhost(float secs) {
@@ -250,13 +239,7 @@ public class Player : MonoBehaviour
         _gameManager.SetGhost(false);
         _animator.SetBool("ghost", false);
         _animator.SetBool("magnetGhost", false);
-        if (_gameManager.HasMagnet()) {
-            // magnet sprite
-            _renderer.sprite = spriteArray[1]; 
-        } else {
-            // default sprite
-           _renderer.sprite = spriteArray[0]; 
-        }
+        
     }
 
     IEnumerator ActivateRainbow(float secs) {
@@ -280,14 +263,6 @@ public class Player : MonoBehaviour
         _gameManager.SetRainbow(false);
         _animator.SetBool("rainbow", false);
         _animator.SetBool("magnetRainbow", false);
-
-        if (_gameManager.HasMagnet()) {
-            // magnet sprite
-            _renderer.sprite = spriteArray[1]; 
-        } else {
-            // default sprite
-           _renderer.sprite = spriteArray[0]; 
-        }
     }
 
     IEnumerator Flicker() {
