@@ -81,28 +81,13 @@ public class Player : MonoBehaviour
             _rigidbody.constraints = ogConst;
         }
 
-        grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
-        for (int i = 0; i < Input.touchCount; ++i){
-
-            Touch touch = Input.GetTouch(i);
-            if ((touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Stationary) && canFly && !_gameManager.IsPaused()){
-                // if (SystemInfo.deviceType == DeviceType.Handheld){
-                //     _rigidbody.AddForce(new Vector3(0, 45 * Time.deltaTime, 0), ForceMode2D.Force);
-                // }
-                // else{
-                    _rigidbody.AddForce(new Vector3(0, 45, 0), ForceMode2D.Force);
-                //}
-                
-            }
-        }
-
         if (Input.GetMouseButton(0) && canFly){
-            if (SystemInfo.deviceType == DeviceType.Handheld){
-                _rigidbody.AddForce(new Vector3(0, 40 * Time.deltaTime, 0), ForceMode2D.Force);
-            }
-            else{
+            // if (SystemInfo.deviceType == DeviceType.Handheld){
+            //     _rigidbody.AddForce(new Vector3(0, 40 * Time.deltaTime, 0), ForceMode2D.Force);
+            // }
+            // else{
                 _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
-            }
+            //}
         } 
         else if (Input.GetMouseButtonUp(0)){
             //_rigidbody.velocity *= 0.5f;
@@ -324,5 +309,20 @@ public class Player : MonoBehaviour
         _renderer.color = Color.red;
         yield return new WaitForSeconds(.1f);
         _renderer.color = Color.white;
+    }
+
+    void Update()
+    {
+
+        grounded = Physics2D.OverlapCircle(feet.position, .3f, whatIsGround);
+        for (int i = 0; i < Input.touchCount; ++i){
+
+            Touch touch = Input.GetTouch(i);
+            //if (touch.phase == TouchPhase.Began){
+            if (touch.phase == TouchPhase.Stationary && canFly && !_gameManager.IsPaused()){
+                _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
+                
+            }
+        }
     }
 }
