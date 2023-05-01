@@ -16,12 +16,11 @@ public class Coin : MonoBehaviour
 
     void Update(){
       if (_gameManager.GetLives() > 0 && PublicVars.magnetCollider && _gameManager.HasMagnet() && Vector3.Distance(playerTransform.position, transform.position) < 4){
-        if (_gameManager.IsRainbow()) {
+        if (_gameManager.IsRainbow()) { // increase spd to catch up to player
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * 5 * Time.deltaTime);
         } else {
             transform.position = Vector3.MoveTowards(transform.position, playerTransform.position, moveSpeed * Time.deltaTime);
         }
-        
       }
     }
 }
