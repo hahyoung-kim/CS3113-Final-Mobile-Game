@@ -29,6 +29,7 @@ public class Spawn : MonoBehaviour
     private float startTime;
     private float elapsedTime;
     private bool canSpawn = false;
+    private bool spawnLasers = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
     private string prev = "";
@@ -53,6 +54,13 @@ public class Spawn : MonoBehaviour
         yield return new WaitForSeconds(secs);
         canSpawn = true;
     }
+
+    public IEnumerator WaitLasers(float secs){
+        spawnLasers = false;
+        yield return new WaitForSeconds(secs);
+        spawnLasers = true;
+    }
+    
 
     public IEnumerator PowerCooldown(float secs){
         spawnPower = false;
@@ -89,7 +97,7 @@ public class Spawn : MonoBehaviour
 
     IEnumerator SpawnObj() {
         spawning = true;
-        if (player.transform.position.x >= 500 && (player.transform.position.x % 500 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
+        if (spawnLasers && player.transform.position.x >= 500 && (player.transform.position.x % 500 <= 150 || iterations > 0) && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) {
             _gameManager.SetLasers(true);
             if (prev != "l") {
                 yield return new WaitForSeconds(3);
@@ -172,6 +180,7 @@ public class Spawn : MonoBehaviour
                 spawnInd = UnityEngine.Random.Range(powersMinInd, powersMaxInd + 1);
             }
             StartCoroutine(PowerCooldown(5));
+            StartCoroutine(WaitLasers(2.5f));
             
         } else if (spawnType <= 9) {  // 45% chance carrots                              
             spawnInd = UnityEngine.Random.Range(carrotsMinInd, carrotsMaxInd + 1);

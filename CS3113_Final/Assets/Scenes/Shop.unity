@@ -5866,7 +5866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'boost
+  m_text: 'rainbow
 
 '
   m_isRightToLeft: 0
@@ -5931,7 +5931,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 7.34761, w: -15.614162}
+  m_margin: {x: 0, y: 0, z: -32.55333, w: -15.614162}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -6182,8 +6182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a886199d13d714faee613d2e5a136a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroungSpeed: 0.1
+  ogSpd: 0
+  game: 0
   backgroundRenderer: {fileID: 1996845737}
+  player: {fileID: 0}
 --- !u!1 &2009358144
 GameObject:
   m_ObjectHideFlags: 0

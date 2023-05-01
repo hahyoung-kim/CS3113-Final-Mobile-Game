@@ -7,6 +7,7 @@ public class LoopingBackground : MonoBehaviour
 {
     private float bgSpd;
     public float ogSpd;
+    public bool game = true;
     public Renderer backgroundRenderer;
     GameManager _gameManager;
     public GameObject player;
@@ -18,9 +19,7 @@ public class LoopingBackground : MonoBehaviour
 
     void Update()
     {
-        
-        print(backgroundRenderer.material.mainTextureOffset);
-        if (_gameManager.GetLives() > 0 && !_gameManager.IsPaused()) {
+        if (game && _gameManager.GetLives() > 0 && !_gameManager.IsPaused()) {
             if (_gameManager.IsRainbow()) {
                 backgroundRenderer.material.mainTextureOffset += new Vector2(ogSpd + Time.deltaTime * 0.2f * (float) (Math.Log(player.transform.position.x)),0f);
             } else {

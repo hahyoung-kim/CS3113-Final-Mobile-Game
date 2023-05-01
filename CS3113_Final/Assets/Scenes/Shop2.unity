@@ -11727,8 +11727,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4a886199d13d714faee613d2e5a136a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  backgroungSpeed: 0.1
+  ogSpd: 0
+  game: 0
   backgroundRenderer: {fileID: 569017333}
+  player: {fileID: 0}
 --- !u!23 &569017333
 MeshRenderer:
   m_ObjectHideFlags: 0
