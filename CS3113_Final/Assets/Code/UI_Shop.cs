@@ -34,11 +34,9 @@ public class UI_Shop : MonoBehaviour
      public Button magnetB;
      public Button boostB;
      public Button shieldB;
-     public Button coinMulB; 
      public TextMeshProUGUI magnetUI;
      public TextMeshProUGUI boostUI;
      public TextMeshProUGUI shieldUI;
-     public TextMeshProUGUI coinMulUI; 
 
     //  public static int magnet = 0;
     //  public static int boost = 0;
@@ -47,17 +45,14 @@ public class UI_Shop : MonoBehaviour
      public static int magnetLvl = 0;
      public static int boostLvl = 0;
      public static int shieldLvl = 0;
-     public static int coinMulLvl = 0;
      public static int carrots = 0;
      bool canBuyMag;
      bool canBuyBoost;
      bool canBuyShield;
-     bool canBuyCoinMul;
 
      private int[] magnetCost = {50, 100, 175, 275, 400};
      private int[] boostCost = {50, 100, 175, 275, 400};
      private int[] shieldCost = {30, 70, 120, 180, 250};
-     private int[] coinMulCost = {75, 125, 200, 300, 425};
 
     void Start(){
         //PlayerPrefs.DeleteAll();
@@ -72,7 +67,6 @@ public class UI_Shop : MonoBehaviour
         magnetLvl = PlayerPrefs.GetInt("magnetLvl", magnetLvl);
         boostLvl = PlayerPrefs.GetInt("boostLvl", boostLvl);
         shieldLvl = PlayerPrefs.GetInt("shieldLvl", shieldLvl);
-        coinMulLvl = PlayerPrefs.GetInt("coinMulLvl", coinMulLvl);
         carrots = PlayerPrefs.GetInt("carrots", carrots);
 
         coinsUI.text = "" + carrots;
@@ -100,14 +94,6 @@ public class UI_Shop : MonoBehaviour
             shieldUI.text = "max";
             canBuyShield = false;
         }
-        if (coinMulLvl < maxLvl){
-            coinMulUI.text = "" + coinMulCost[coinMulLvl];
-            canBuyCoinMul = (coinMulCost[coinMulLvl] <= carrots);
-        }
-        else{
-            coinMulUI.text = "max";
-            canBuyCoinMul = false;
-        }
 
         if (magnetLvl == maxLvl || canBuyMag == false){
             magnetB.interactable = false;
@@ -128,13 +114,6 @@ public class UI_Shop : MonoBehaviour
         }
         else{
             shieldB.interactable = true;
-        }
-        
-        if (coinMulLvl == maxLvl || canBuyCoinMul == false){
-            coinMulB.interactable = false;
-        }
-        else{
-            coinMulB.interactable = true;
         }
     }
 
@@ -170,17 +149,6 @@ public class UI_Shop : MonoBehaviour
         }
         if (shieldLvl == maxLvl || canBuyShield == false){
             shieldB.interactable = false;
-        }
-    }
-
-    public void coinMulButton(){
-        if (canBuyCoinMul && coinMulLvl != maxLvl){
-            carrots -= coinMulCost[coinMulLvl];
-            PlayerPrefs.SetInt("carrots", carrots);
-            PlayerPrefs.SetInt("coinMulLvl", coinMulLvl+1);
-        }
-        if (shieldLvl == maxLvl || canBuyCoinMul == false){
-            coinMulB.interactable = false;
         }
     }
 
