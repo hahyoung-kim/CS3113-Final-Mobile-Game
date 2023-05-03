@@ -139,7 +139,7 @@ public class Spawn : MonoBehaviour
         StartCoroutine(WaitNonLasers(14));
         prev = "l";
         print("lasers");
-        float[] yCoords = { -3.4f, -2f, -.6f, 0.8f, 2.2f, 3.6f };
+        float[] yCoords = { -3f, -1.6f, -.2f, 1.2f, 2.6f, 4f };
         // shuffle y coords to randomly select where bunnies will spawn
         System.Random random = new System.Random();
         yCoords = yCoords.OrderBy(x => random.Next()).ToArray();

@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
 {
     public int speed = 3;
     public int jumpForce = 650;
-    int bulletSpeed = 600;
     private Rigidbody2D _rigidbody;
     private Animator _animator; 
     private SpriteRenderer _renderer;
@@ -89,12 +88,8 @@ public class Player : MonoBehaviour
         }
 
         if (Input.GetMouseButton(0) && canFly){
-            // if (SystemInfo.deviceType == DeviceType.Handheld){
-            //     _rigidbody.AddForce(new Vector3(0, 40 * Time.deltaTime, 0), ForceMode2D.Force);
-            // }
-            // else{
-                _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
-            //}
+            _rigidbody.AddForce(new Vector3(0, 40, 0), ForceMode2D.Force);
+            
         } 
         else if (Input.GetMouseButtonUp(0)){
             //_rigidbody.velocity *= 0.5f;
@@ -105,13 +100,6 @@ public class Player : MonoBehaviour
         else if (transform.position.x - camera.position.x >= -2.7f && grounded) {
             _rigidbody.velocity = new Vector2(-speed,_rigidbody.velocity.y);
         }
-
-        // float xScale = transform.localScale.x;
-        // if ((xSpeed < 0 && xScale > 0) || (xSpeed > 0 && xScale < 1))
-        // {
-        //     transform.localScale *= new Vector2(-1,1);
-        // }
-        // _animator.SetFloat("Speed", Mathf.Abs(xSpeed));
 
         // track power up lvls
         magnetLvl = PlayerPrefs.GetInt("magnetLvl", magnetLvl);
