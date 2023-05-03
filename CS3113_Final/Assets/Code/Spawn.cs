@@ -30,6 +30,7 @@ public class Spawn : MonoBehaviour
     private float elapsedTime;
     private bool canSpawn = false;
     private bool spawnLasers = false;
+    private bool spawnMissiles = false;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
     private string prev = "";
@@ -127,6 +128,12 @@ public class Spawn : MonoBehaviour
         spawnNonLasers = true;
     }
 
+    IEnumerator WaitMissiles(float secs) {
+        spawnMissiles = false;
+        yield return new WaitForSeconds(secs);
+        spawnMissiles = true;
+    }
+
     void SpawnLasers() {
         StartCoroutine(WaitSpawn(5f));
         StartCoroutine(WaitNonLasers(14));
@@ -162,7 +169,7 @@ public class Spawn : MonoBehaviour
         //     GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 13f, yCoords[i], -1f), transform.rotation);
         // }
         GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 11.25f, yCoords[0], -1f), transform.rotation);
-        //StartCoroutine(WaitNonLasers(1));
+        StartCoroutine(WaitMissiles(6));
     }
 
     void SpawnObsCrts() {
