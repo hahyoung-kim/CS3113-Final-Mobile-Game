@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public string currLvl = "Level1";
     GameManager _gameManager;
     AudioSource _audioSource;
+    AudioSource _bgmAudioSource;
     public AudioClip hurtSound;
     public AudioClip pickupSound;
     public AudioClip magSound;
@@ -73,6 +74,7 @@ public class Player : MonoBehaviour
         ogConst = _rigidbody.constraints;
         StartCoroutine(WaitFly());
         coinDetectorObj.SetActive(false);
+        _bgmAudioSource = _gameManager.GetComponent<AudioSource>();
     
         carrots = gameObject.GetComponent<ScoreManager>();
         _rigidbody.gravityScale = 2;
@@ -235,6 +237,7 @@ public class Player : MonoBehaviour
     IEnumerator ActivateRainbow(float secs) {
         _gameManager.SetRainbow(true);
         _animator.SetBool("rainbow", true);
+        _bgmAudioSource.pitch = 2;
 
         yield return new WaitForSeconds(1.5f);
         if (_gameManager.HasMagnet()) {
@@ -253,6 +256,7 @@ public class Player : MonoBehaviour
         _gameManager.SetRainbow(false);
         _animator.SetBool("rainbow", false);
         _animator.SetBool("magnetRainbow", false);
+        _bgmAudioSource.pitch = 1;
     }
 
     IEnumerator Flicker() {
