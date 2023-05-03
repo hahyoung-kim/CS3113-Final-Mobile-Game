@@ -27429,6 +27429,7 @@ MonoBehaviour:
   lives: 1
   currLvl: Level1
   gameOverLevel: MainMenu
+  hurtSound: {fileID: 8300000, guid: 790e6066e400fc040a6c6b29a8145317, type: 3}
   player: {fileID: 1203076797}
   canvas: {fileID: 1711364113}
   bgnd: {fileID: 2097573219}

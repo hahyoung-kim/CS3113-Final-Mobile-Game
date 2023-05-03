@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     GameManager _gameManager;
     AudioSource _audioSource;
     AudioSource _bgmAudioSource;
-    public AudioClip hurtSound;
+    
     public AudioClip pickupSound;
     public AudioClip magSound;
     public AudioClip ghostSound;
@@ -141,9 +141,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Enemy") && !_gameManager.IsRainbow() && !_gameManager.IsGhost()) {
-            _audioSource.PlayOneShot(hurtSound);
-            _gameManager.loseLife(1);
+            _gameManager.SetPause(true);
             StartCoroutine(FlashRed());
+            _gameManager.loseLife(1);
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
             Destroy(other.gameObject);

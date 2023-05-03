@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     //public Image black;
     //public Animator animator;
     AudioSource _audioSource;
+    public AudioClip hurtSound;
     public GameObject player;
     public GameObject canvas;
     //public GameObject title;
@@ -81,8 +82,7 @@ public class GameManager : MonoBehaviour
 
         //livesUI.text = "Lives: " + lives;
         if (lives<=0){
-            //StartCoroutine(PlayerDeath());
-            PlayerDeath();
+            StartCoroutine(PlayerDeath());
         }
         //ReduceHealthText("-" + lostLife, "r");
 
@@ -94,9 +94,10 @@ public class GameManager : MonoBehaviour
         //ReduceHealthText("+" + add, "g");
     }
 
-    //IEnumerator PlayerDeath() {
-    private void PlayerDeath() {
+    IEnumerator PlayerDeath() {
+        _audioSource.PlayOneShot(hurtSound);
         //Instantiate(explosion, player.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(.2f);
         Destroy(player);
         hasMag = false;
         isGh = false;
