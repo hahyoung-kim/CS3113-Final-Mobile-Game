@@ -54,6 +54,11 @@ public class Player : MonoBehaviour
     public static int blossomsEq = 0;
     public static int rainbowEq = 0;
 
+    void Awake() {
+        GameObject nonGameMusic = GameObject.FindGameObjectWithTag("Music");
+        Destroy(nonGameMusic);
+    }
+
     void Start()
     {
         // uncomment to reset all play prefs

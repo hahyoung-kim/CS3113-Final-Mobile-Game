@@ -68,7 +68,7 @@ public class UI_Shop2 : MonoBehaviour
         blossomsEq = PlayerPrefs.GetInt("blossomsEq", blossomsEq);
         rainbowEq = PlayerPrefs.GetInt("rainbowEq", rainbowEq);
 
-        print(carrots);
+        //print(carrots);
 
         coinsUI.text = "" + carrots;
         if (stars < maxLvl){
