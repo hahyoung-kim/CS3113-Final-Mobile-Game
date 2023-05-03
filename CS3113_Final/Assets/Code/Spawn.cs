@@ -29,8 +29,8 @@ public class Spawn : MonoBehaviour
     private float startTime;
     private float elapsedTime;
     private bool canSpawn = false;
-    private bool spawnLasers = false;
-    private bool spawnMissiles = false;
+    private bool spawnLasers = true;
+    private bool spawnMissiles = true;
     private ArrayList spawned = new ArrayList(); 
     private bool spawnPower = true;
     private string prev = "";
@@ -112,7 +112,7 @@ public class Spawn : MonoBehaviour
         } else if (spawnNonLasers) {
             _gameManager.SetLasers(false);
             int r = UnityEngine.Random.Range(0, 10);
-            if (player.transform.position.x >= 300 && r == 0 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) { // 10% chance missile
+            if (spawnMissiles && player.transform.position.x >= 300 && r == 0 && !_gameManager.HasMagnet() && !_gameManager.IsGhost() && !_gameManager.IsRainbow()) { // 10% chance missile
                 StartCoroutine(SpawnMissile());
             } else { // 90% obstacle or carrots
                 SpawnObsCrts();
