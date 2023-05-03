@@ -13,6 +13,7 @@ TagManager:
   - Coin Detector
   - Player Bubble
   - Laser
+  - Missile
   layers:
   - Default
   - TransparentFX

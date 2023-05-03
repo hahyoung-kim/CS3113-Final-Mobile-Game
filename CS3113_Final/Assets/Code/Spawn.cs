@@ -216,7 +216,7 @@ public class Spawn : MonoBehaviour
 
     public void DeleteObstacles() {
         foreach (GameObject g in spawned) {
-            if (g != null && g.gameObject.tag == "Enemy") {
+            if (g != null && (g.gameObject.tag == "Enemy" || g.gameObject.tag == "Missile")) {
                 Destroy(g.gameObject);
             }
         }
