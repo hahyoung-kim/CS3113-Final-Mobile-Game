@@ -140,10 +140,8 @@ public class Player : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Enemy") && !_gameManager.IsRainbow() && !_gameManager.IsGhost()) {
-            _gameManager.SetPause(true);
-            StartCoroutine(FlashRed());
-            _gameManager.loseLife(1);
+        if ((other.CompareTag("Enemy") || other.CompareTag("Laser")) && !_gameManager.IsRainbow() && !_gameManager.IsGhost()) {
+           Death();
         } else if (other.CompareTag("Carrot")){
             _audioSource.PlayOneShot(pickupSound);
             Destroy(other.gameObject);
@@ -164,13 +162,16 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
             StartCoroutine(DisplayPowerUI(powerIcons[2], "Rainbow Bunny"));
             StartCoroutine(ActivateRainbow(7));
-        } else if (other.CompareTag("Laser")){
-            _gameManager.loseLife(1);
         }
     }
 
+    private void Death() {
+        _gameManager.SetPause(true);
+        StartCoroutine(FlashRed());
+        _gameManager.loseLife(1);
+    }
+
     IEnumerator ActivateMagnet(float secs) {
-        print("done");
         _gameManager.SetMagnet(true);
         _animator.SetBool("magnet", true);
 

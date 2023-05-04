@@ -224,6 +224,12 @@ public class Spawn : MonoBehaviour
     public void DeleteObstacles() {
         foreach (GameObject g in spawned) {
             if (g != null && (g.gameObject.tag == "Enemy" || g.gameObject.tag == "Missile")) {
+                if (g.gameObject.tag == "Missile") {
+                    foreach (Transform ch in g.gameObject.transform.GetComponentsInChildren<Transform>())
+                    {
+                        Destroy(ch.gameObject);
+                    }
+                }
                 Destroy(g.gameObject);
             }
         }
