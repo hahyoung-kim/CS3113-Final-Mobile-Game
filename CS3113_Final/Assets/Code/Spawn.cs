@@ -170,6 +170,7 @@ public class Spawn : MonoBehaviour
         // }
         GameObject spawnedMissile = Instantiate(missileBunny, new Vector3(player.transform.position.x + 11.25f, yCoords[0], -1f), transform.rotation);
         StartCoroutine(WaitMissiles(6));
+        spawned.Add(spawnedMissile);
     }
 
     void SpawnObsCrts() {
